@@ -7,6 +7,7 @@ extends Node2D
 var hunger_time = 10
 
 func _ready():
+	#set the eaten label to invisible
 	eaten_label.modulate.a = 0.0
 	
 	#initalize the progress bar

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b2yso33xe3x6i"]
 
-[ext_resource type="Script" uid="uid://dq08rxug2e0yp" path="res://timer.gd" id="1_7jo7d"]
+[ext_resource type="Script" uid="uid://dq08rxug2e0yp" path="res://Scripts/timer.gd" id="1_7jo7d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h3sn8"]
 
