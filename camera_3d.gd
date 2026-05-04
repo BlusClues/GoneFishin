@@ -12,6 +12,8 @@ func _input(event):
 		position.y -= event.relative.y * 0.005
 	if event is InputEventKey and event.keycode == KEY_SPACE:
 		is_dipping = event.pressed
+	if event is InputEventKey and event.keycode == KEY_R:
+		get_tree().quit()
 
 func _process(delta):
 	if is_dipping:
