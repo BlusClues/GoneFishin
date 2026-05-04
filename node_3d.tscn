@@ -1,16 +1,8 @@
 [gd_scene format=3 uid="uid://47owy5o10wt7"]
 
-[ext_resource type="Script" path="res://camera_3d.gd" id="1_a202f"]
-[ext_resource type="Script" path="res://area_3d.gd" id="2_noarx"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
-grow = true
-
-[sub_resource type="SphereMesh" id="SphereMesh_noarx"]
-material = SubResource("StandardMaterial3D_noarx")
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_a0tk4"]
-radius = 0.67440414
+[ext_resource type="Script" uid="uid://cokfw48fv0ohf" path="res://camera_3d.gd" id="1_a202f"]
+[ext_resource type="PackedScene" uid="uid://b4n0vlqmevhis" path="res://Fish.tscn" id="2_noarx"]
+[ext_resource type="PackedScene" uid="uid://b2yso33xe3x6i" path="res://Timer.tscn" id="3_a0tk4"]
 
 [node name="Node3D" type="Node3D" unique_id=196202678]
 
@@ -22,40 +14,14 @@ size = Vector3(38.192432, 25.45737, 0.2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6929545, 4.045631, 12.600105)
 script = ExtResource("1_a202f")
 
-[node name="Area3D" type="Area3D" parent="." unique_id=984886391 groups=["orbs"]]
-script = ExtResource("2_noarx")
+[node name="Fish1" parent="." unique_id=1202207361 instance=ExtResource("2_noarx")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1538323347]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8290558, 0.87598264)
-mesh = SubResource("SphereMesh_noarx")
+[node name="Fish2" parent="." unique_id=777645399 instance=ExtResource("2_noarx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.590913, -0.2336464, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D/MeshInstance3D" unique_id=1247308319]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07559472, 0.067676544, -0.013874531)
-shape = SubResource("SphereShape3D_a0tk4")
-debug_color = Color(0.39999998, 0.7699999, 1, 0.41960785)
+[node name="Fish3" parent="." unique_id=2049857449 instance=ExtResource("2_noarx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.092302, 0)
 
-[node name="Area3D3" type="Area3D" parent="." unique_id=75998386 groups=["orbs"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.607307, 0, 0)
-script = ExtResource("2_noarx")
+[node name="Timer" parent="." unique_id=1399422570 instance=ExtResource("3_a0tk4")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D3" unique_id=56544323]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8290558, 0.87598264)
-mesh = SubResource("SphereMesh_noarx")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3/MeshInstance3D" unique_id=794096831]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07559472, 0.067676544, -0.013874531)
-shape = SubResource("SphereShape3D_a0tk4")
-debug_color = Color(0.39999998, 0.7699999, 1, 0.41960785)
-
-[node name="Area3D2" type="Area3D" parent="." unique_id=421440021 groups=["orbs"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.552626, 0)
-script = ExtResource("2_noarx")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D2" unique_id=1697283250]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8290558, 0.87598264)
-mesh = SubResource("SphereMesh_noarx")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2/MeshInstance3D" unique_id=880753417]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07559472, 0.067676544, -0.013874531)
-shape = SubResource("SphereShape3D_a0tk4")
-debug_color = Color(0.39999998, 0.7699999, 1, 0.41960785)
+[connection signal="fish_eaten" from="Camera3D" to="Timer" method="_on_camera_3d_fish_eaten"]

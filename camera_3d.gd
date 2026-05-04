@@ -3,6 +3,8 @@ extends Camera3D
 var is_dipping = false
 var collect_range = 1.0
 
+signal fish_eaten
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -24,3 +26,4 @@ func _process(delta):
 	for orb in get_tree().get_nodes_in_group("orbs"):
 		if position.distance_to(orb.position) < collect_range:
 			orb.queue_free()
+			fish_eaten.emit()

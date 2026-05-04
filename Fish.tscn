@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b4n0vlqmevhis"]
+
+[ext_resource type="Script" path="res://area_3d.gd" id="1_8um3m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
+grow = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_noarx"]
+material = SubResource("StandardMaterial3D_noarx")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a0tk4"]
+radius = 0.67440414
+
+[node name="Area3D" type="Area3D" unique_id=1202207361 groups=["orbs"]]
+script = ExtResource("1_8um3m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1196963956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8290558, 0.87598264)
+mesh = SubResource("SphereMesh_noarx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D" unique_id=632105981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07559472, 0.067676544, -0.013874531)
+shape = SubResource("SphereShape3D_a0tk4")
+debug_color = Color(0.39999998, 0.7699999, 1, 0.41960785)

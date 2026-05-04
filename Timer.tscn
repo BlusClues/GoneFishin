@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b2yso33xe3x6i"]
+
+[ext_resource type="Script" uid="uid://dq08rxug2e0yp" path="res://timer.gd" id="1_7jo7d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h3sn8"]
+
+[node name="Timer" type="Node2D" unique_id=1399422570]
+script = ExtResource("1_7jo7d")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=583069752]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1750377986]
+offset_left = 998.0
+offset_top = 10.0
+offset_right = 1038.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h3sn8")
+
+[node name="EatenLabel" type="Label" parent="CanvasLayer/Panel" unique_id=1990134030]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 2.0
+offset_right = 99.0
+offset_bottom = 25.0
+text = "+5"
+
+[node name="HungerLabel" type="Label" parent="CanvasLayer/Panel" unique_id=1671696143]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 26.0
+offset_right = 152.0
+offset_bottom = 85.0
+text = "Hunger"
+
+[node name="HungerBar" type="ProgressBar" parent="CanvasLayer/Panel" unique_id=593377604]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 137.0
+offset_bottom = 28.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="." unique_id=1642344728]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
