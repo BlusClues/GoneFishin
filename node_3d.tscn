@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://47owy5o10wt7"]
 
 [ext_resource type="Script" uid="uid://cokfw48fv0ohf" path="res://Scripts/camera.gd" id="1_a202f"]
+[ext_resource type="PackedScene" uid="uid://dxqrvyutf6e14" path="res://Art-Stuff/Fishes_Itchio/Luciobarbus_guiranois/Luciobarbus guiranois.fbx" id="2_jka67"]
 [ext_resource type="PackedScene" uid="uid://b4n0vlqmevhis" path="res://Scenes/Fish.tscn" id="2_noarx"]
 [ext_resource type="PackedScene" uid="uid://b2yso33xe3x6i" path="res://Scenes/Timer.tscn" id="3_a0tk4"]
 [ext_resource type="PackedScene" uid="uid://duuup4xf7vlcv" path="res://Scenes/Lure.tscn" id="3_r3fl7"]
@@ -12,8 +13,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.414915, 6.096285, 0.0537924
 size = Vector3(38.192432, 25.45737, 0.2)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1796331184]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6929545, 4.045631, 12.600105)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6205163, 4.045631, 12.54817)
 script = ExtResource("1_a202f")
+
+[node name="Luciobarbus guiranois" parent="Camera3D" unique_id=1361425236 instance=ExtResource("2_jka67")]
+transform = Transform3D(-0.99871933, 0, -0.0505929, 0, 1, 0, 0.0505929, 0, -0.99871933, 0, -1.0786624, 0.2680931)
 
 [node name="Fish1" parent="." unique_id=1202207361 instance=ExtResource("2_noarx")]
 
