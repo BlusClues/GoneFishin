@@ -4,7 +4,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h3sn8"]
 
-[node name="Timer" type="Node2D" unique_id=1399422570]
+[node name="StaminaTimer" type="Node2D" unique_id=1399422570]
 script = ExtResource("1_7jo7d")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=583069752]
@@ -24,7 +24,7 @@ offset_right = 99.0
 offset_bottom = 25.0
 text = "+5"
 
-[node name="HungerLabel" type="Label" parent="CanvasLayer/Panel" unique_id=1671696143]
+[node name="StaminaLabel" type="Label" parent="CanvasLayer/Panel" unique_id=1671696143]
 layout_mode = 0
 offset_left = 39.0
 offset_top = 26.0
@@ -32,13 +32,9 @@ offset_right = 152.0
 offset_bottom = 85.0
 text = "Hunger"
 
-[node name="HungerBar" type="ProgressBar" parent="CanvasLayer/Panel" unique_id=593377604]
+[node name="StaminaBar" type="ProgressBar" parent="CanvasLayer/Panel" unique_id=593377604]
 layout_mode = 0
 offset_top = 1.0
 offset_right = 137.0
 offset_bottom = 28.0
 show_percentage = false
-
-[node name="Timer" type="Timer" parent="." unique_id=1642344728]
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

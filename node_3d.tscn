@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cokfw48fv0ohf" path="res://Scripts/camera.gd" id="1_a202f"]
 [ext_resource type="PackedScene" uid="uid://b4n0vlqmevhis" path="res://Scenes/Fish.tscn" id="2_noarx"]
-[ext_resource type="PackedScene" uid="uid://b2yso33xe3x6i" path="res://Scenes/Timer.tscn" id="3_a0tk4"]
+[ext_resource type="PackedScene" uid="uid://b2yso33xe3x6i" path="res://Scenes/StaminaTimer.tscn" id="3_a0tk4"]
 [ext_resource type="PackedScene" uid="uid://duuup4xf7vlcv" path="res://Scenes/Lure.tscn" id="3_r3fl7"]
 
 [node name="Node3D" type="Node3D" unique_id=196202678]

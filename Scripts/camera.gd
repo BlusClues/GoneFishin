@@ -19,6 +19,7 @@ func _input(event):
 		is_dipping = event.pressed
 	if event is InputEventKey and event.keycode == KEY_R:
 		get_tree().quit()
+		
 
 func _process(delta):
 	#dash forward to eat
