@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://47owy5o10wt7"]
 
-[ext_resource type="Script" uid="uid://m047ifjfsaba" path="res://Scripts/player.gd" id="1_jka67"]
-[ext_resource type="Script" uid="uid://b156qpbxjnmnl" path="res://Scripts/Eat.gd" id="2_i5arm"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_jka67"]
+[ext_resource type="Script" path="res://Scripts/Eat.gd" id="2_i5arm"]
 [ext_resource type="PackedScene" uid="uid://dxqrvyutf6e14" path="res://Art-Stuff/Fishes_Itchio/Luciobarbus_guiranois/Luciobarbus guiranois.fbx" id="2_jka67"]
 [ext_resource type="PackedScene" uid="uid://b4n0vlqmevhis" path="res://Scenes/Fish.tscn" id="2_noarx"]
 [ext_resource type="PackedScene" uid="uid://b2yso33xe3x6i" path="res://Scenes/StaminaTimer.tscn" id="3_a0tk4"]
 [ext_resource type="PackedScene" uid="uid://duuup4xf7vlcv" path="res://Scenes/Lure.tscn" id="3_r3fl7"]
-[ext_resource type="PackedScene" uid="uid://h87m70c4c8o3" path="res://Scenes/SpeedLines.tscn" id="6_wc5p8"]
+[ext_resource type="PackedScene" path="res://Scenes/SpeedLines.tscn" id="6_wc5p8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jka67"]
 
