@@ -21,6 +21,9 @@ func _process(delta):
 	#swimming
 	position.z += -20.0 * delta
 	
+	if global_position.z < -70:
+		global_position.z = 200
+	
 	#dash forward to eat
 	#if is_dipping:
 	#	position.z = move_toward(position.z, 0.5, 5.0 * delta)
