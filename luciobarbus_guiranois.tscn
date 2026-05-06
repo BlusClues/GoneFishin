@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://caq7405ae8l4a"]
-
-[ext_resource type="PackedScene" uid="uid://dxqrvyutf6e14" path="res://Art-Stuff/Fishes_Itchio/Luciobarbus_guiranois/Luciobarbus guiranois.fbx" id="1_nrkm4"]
-
-[node name="Luciobarbus guiranois" unique_id=1361425236 instance=ExtResource("1_nrkm4")]
