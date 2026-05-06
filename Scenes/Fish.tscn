@@ -1,12 +1,22 @@
 [gd_scene format=3 uid="uid://b4n0vlqmevhis"]
 
 [ext_resource type="Script" uid="uid://r48qtr28keq4" path="res://Scripts/area_3d.gd" id="1_8um3m"]
+[ext_resource type="Script" uid="uid://b5gdcs3kgjiwe" path="res://Scenes/fish.gd" id="1_bix4d"]
+[ext_resource type="PackedScene" uid="uid://c78xx87aruvb" path="res://Art-Stuff/Fishes_Itchio/Scomber_Scombrus/Scomber scrombus.fbx" id="2_556at"]
 [ext_resource type="PackedScene" uid="uid://bslesyqxiottk" path="res://Art-Stuff/Fishes_Itchio/Cobitis_paludica/Cobitis_paludica.fbx" id="2_two43"]
+[ext_resource type="PackedScene" uid="uid://dxqrvyutf6e14" path="res://Art-Stuff/Fishes_Itchio/Luciobarbus_guiranois/Luciobarbus guiranois.fbx" id="3_bix4d"]
+[ext_resource type="PackedScene" uid="uid://ih3ry60yn2bs" path="res://Art-Stuff/Fishes_Itchio/Lithognathus_mormyrus/Lithognathus mormyrus.fbx" id="4_vy7dc"]
+[ext_resource type="PackedScene" uid="uid://c2r70mcbq2tol" path="res://Art-Stuff/Fishes_Itchio/Lichia_Amia/Lichia_amia.fbx" id="5_u0h3e"]
+[ext_resource type="PackedScene" uid="uid://boxwnfp75uujh" path="res://Art-Stuff/Fishes_Itchio/Diplodus_Sargus/Diplodus_Sargus.fbx" id="6_1kgli"]
+[ext_resource type="PackedScene" uid="uid://u2kwcq6tc52d" path="res://Art-Stuff/Fishes_Itchio/Dicentrarchus_labrax/Dicentrarchus_labrax.fbx" id="7_qc48r"]
+[ext_resource type="PackedScene" uid="uid://s3iqf30auteq" path="res://Art-Stuff/Fishes_Itchio/Coryphaena_hippurus/Coryphaena_hippurus.fbx" id="8_55k2l"]
+[ext_resource type="PackedScene" uid="uid://digyao1haj5lx" path="res://Art-Stuff/Fishes_Itchio/Seriola_dumerili/Seriola_dumerili.fbx" id="10_kht2p"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a0tk4"]
 radius = 0.67440414
 
 [node name="Fish" type="Node3D" unique_id=1486037513 groups=["fish", "orbs"]]
+script = ExtResource("1_bix4d")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1202207361]
 script = ExtResource("1_8um3m")
@@ -16,5 +26,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07559472, 0.89673233, 0.86
 shape = SubResource("SphereShape3D_a0tk4")
 debug_color = Color(0.39999998, 0.7699999, 1, 0.41960785)
 
+[node name="Scomber scrombus" parent="Area3D" unique_id=232486159 instance=ExtResource("2_556at")]
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, 0.67651415, 0.6657053)
+visible = false
+
+[node name="Luciobarbus guiranois" parent="Area3D" unique_id=622099265 instance=ExtResource("3_bix4d")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.7123102, 0.71244013)
+visible = false
+
+[node name="Lithognathus mormyrus" parent="Area3D" unique_id=133280056 instance=ExtResource("4_vy7dc")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.7360147, 0.78596365)
+visible = false
+
+[node name="Lichia_amia" parent="Area3D" unique_id=500262875 instance=ExtResource("5_u0h3e")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.6996083, 0.63604856)
+visible = false
+
+[node name="Diplodus_Sargus" parent="Area3D" unique_id=461900569 instance=ExtResource("6_1kgli")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.7476491, 0.8945421)
+visible = false
+
+[node name="Dicentrarchus_labrax" parent="Area3D" unique_id=370728040 instance=ExtResource("7_qc48r")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.74976635, 0.58047366)
+visible = false
+
+[node name="Coryphaena_hippurus" parent="Area3D" unique_id=1556547490 instance=ExtResource("8_55k2l")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.711933, 0.7476269)
+visible = false
+
 [node name="Cobitis_paludica" parent="Area3D" unique_id=262680017 instance=ExtResource("2_two43")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.8290558, 0.87598264)
+visible = false
+
+[node name="Seriola_dumerili" parent="Area3D" unique_id=1896335953 instance=ExtResource("10_kht2p")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.07559472, 0.89673233, 0.8621081)
+visible = false

@@ -13,6 +13,8 @@ var line_ages = []
 var line_max_duration = 2.0
 var is_dashing = false
 
+#TODO Make speed lines not go over the fish. fish area is banned!
+
 func _ready():
 	#make list of lines that need to be added
 	for i in range(num_lines):
