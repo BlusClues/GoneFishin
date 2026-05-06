@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://h87m70c4c8o3"]
 
-[ext_resource type="Script" uid="uid://jv5bo0vpjl2m" path="res://speed_lines.gd" id="1_7xdry"]
+[ext_resource type="Script" uid="uid://jv5bo0vpjl2m" path="res://Scripts/speed_lines.gd" id="1_7xdry"]
 
 [node name="SpeedLines" type="Node2D" unique_id=1061225812]
 script = ExtResource("1_7xdry")
