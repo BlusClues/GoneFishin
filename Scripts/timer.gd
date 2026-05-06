@@ -7,7 +7,7 @@ extends Node2D
 var stamina_time = 10
 var current_stamina
 var dash_multiplier = 2.0
-var dashing = false
+var is_dashing = false
 
 func _ready():
 	current_stamina = stamina_time
@@ -18,22 +18,13 @@ func _ready():
 	#initalize the progress bar
 	stamina_bar.max_value = stamina_time
 	stamina_bar.value = stamina_time
-	
-	$"../Player/Area3D/CollisionShape3D".fish_eaten.connect(_on_fish_eaten)
-	$"../Player/Area3D/CollisionShape3D".lure_eaten.connect(_on_lure_eaten)
 
 func _process(delta):
-	#check if dashing
-	if Input.is_action_pressed("Escape"):
-		dashing = true
-	else:
-		dashing = false
-	
 	#normal rate 
 	var speed = 1.0
 	
 	#switch to dashing rate
-	if dashing == true:
+	if is_dashing == true:
 		speed = dash_multiplier
 	
 	#make hunger tick down depending on rate
@@ -45,9 +36,13 @@ func _process(delta):
 	if current_stamina <= 0:
 		print("Timer Stop")
 
+#checks if the player is still dashing
+func _on_player_dash_state_changed(is_player_dashing: bool):
+	is_dashing = is_player_dashing
+
 #when you eat a fish add time to timer
 #signal from camera_3d
-func _on_fish_eaten():
+func _on_collision_shape_3d_fish_eaten():
 	print("Fish Eaten")
 	current_stamina += 5
 	
@@ -57,6 +52,7 @@ func _on_fish_eaten():
 		var tween = create_tween()
 		tween.tween_property(eaten_label, "modulate:a", 0.0, 2.0)
 
+#might not need since we would want a different script for the lure to make modular but fine for now
 #when you eat a lure reduce stamina
 func _on_lure_eaten():
 	print("Lure Eaten")

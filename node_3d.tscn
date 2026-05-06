@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://47owy5o10wt7"]
 
-[ext_resource type="Script" uid="uid://m047ifjfsaba" path="res://static_body_3d.gd" id="1_jka67"]
-[ext_resource type="Script" uid="uid://b156qpbxjnmnl" path="res://Eat.gd" id="2_i5arm"]
+[ext_resource type="Script" uid="uid://m047ifjfsaba" path="res://Scripts/player.gd" id="1_jka67"]
+[ext_resource type="Script" uid="uid://b156qpbxjnmnl" path="res://Scripts/Eat.gd" id="2_i5arm"]
 [ext_resource type="PackedScene" uid="uid://dxqrvyutf6e14" path="res://Art-Stuff/Fishes_Itchio/Luciobarbus_guiranois/Luciobarbus guiranois.fbx" id="2_jka67"]
 [ext_resource type="PackedScene" uid="uid://b4n0vlqmevhis" path="res://Scenes/Fish.tscn" id="2_noarx"]
 [ext_resource type="PackedScene" uid="uid://b2yso33xe3x6i" path="res://Scenes/StaminaTimer.tscn" id="3_a0tk4"]
 [ext_resource type="PackedScene" uid="uid://duuup4xf7vlcv" path="res://Scenes/Lure.tscn" id="3_r3fl7"]
+[ext_resource type="PackedScene" uid="uid://h87m70c4c8o3" path="res://Scenes/SpeedLines.tscn" id="6_wc5p8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jka67"]
 
@@ -57,6 +58,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45322943, -2.077139, 173.43
 
 [node name="Timer" parent="." unique_id=1399422570 instance=ExtResource("3_a0tk4")]
 
+[node name="SpeedLines" parent="." unique_id=1061225812 instance=ExtResource("6_wc5p8")]
+
 [node name="Lure" parent="." unique_id=685706361 instance=ExtResource("3_r3fl7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7210016, -1.7359166, 23.710508)
 
@@ -96,3 +99,6 @@ size = Vector3(38.192, 25.457, 404.582)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=706500385]
 environment = SubResource("Environment_wc5p8")
 compositor = SubResource("Compositor_jsk3o")
+
+[connection signal="dash_state_changed" from="Player" to="Timer" method="_on_player_dash_state_changed"]
+[connection signal="fish_eaten" from="Player/Area3D/CollisionShape3D" to="Timer" method="_on_collision_shape_3d_fish_eaten"]
