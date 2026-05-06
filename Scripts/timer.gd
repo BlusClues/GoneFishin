@@ -18,6 +18,9 @@ func _ready():
 	#initalize the progress bar
 	stamina_bar.max_value = stamina_time
 	stamina_bar.value = stamina_time
+	
+	$"../Player/Area3D/CollisionShape3D".fish_eaten.connect(_on_fish_eaten)
+	$"../Player/Area3D/CollisionShape3D".lure_eaten.connect(_on_lure_eaten)
 
 func _process(delta):
 	#check if dashing
@@ -44,7 +47,7 @@ func _process(delta):
 
 #when you eat a fish add time to timer
 #signal from camera_3d
-func _on_camera_3d_fish_eaten():
+func _on_fish_eaten():
 	print("Fish Eaten")
 	current_stamina += 5
 	
@@ -53,3 +56,8 @@ func _on_camera_3d_fish_eaten():
 		eaten_label.modulate.a = 1.0
 		var tween = create_tween()
 		tween.tween_property(eaten_label, "modulate:a", 0.0, 2.0)
+
+#when you eat a lure reduce stamina
+func _on_lure_eaten():
+	print("Lure Eaten")
+	current_stamina -= 3
