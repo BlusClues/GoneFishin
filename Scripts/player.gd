@@ -25,9 +25,12 @@ func _process(delta):
 	#swimming
 	position.z += -20.0 * delta
 	
+	if global_position.z < -70:
+		global_position.z = 200
+	
 	#dashing
 	var currently_dashing = Input.is_action_pressed("Dash")
-	
+
 	#check if youro current state matches saved state
 	if currently_dashing != dashing:
 		dashing = currently_dashing

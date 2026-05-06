@@ -32,17 +32,19 @@ volumetric_fog_emission = Color(0.07405893, 0.30377233, 0.18541217, 1)
 [node name="Node3D" type="Node3D" unique_id=196202678]
 
 [node name="Player" type="StaticBody3D" parent="." unique_id=561671710]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 4.918, 1.18, 200)
 script = ExtResource("1_jka67")
 
-[node name="Area3D" type="Area3D" parent="Player" unique_id=861540360]
+[node name="Area3D" type="Area3D" parent="Player" unique_id=41779598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 198.17232)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D" unique_id=1002879969]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9311886, 197.22865)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9311886, -0.94366455)
 shape = SubResource("SphereShape3D_jka67")
 script = ExtResource("2_i5arm")
 
 [node name="Camera3D" type="Camera3D" parent="Player/Area3D" unique_id=1796331184]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 199.012)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8396759)
 
 [node name="Luciobarbus guiranois" parent="Player/Area3D/Camera3D" unique_id=1361425236 instance=ExtResource("2_jka67")]
 transform = Transform3D(-0.99871933, 0, -0.0505929, 0, 1, 0, 0.0505929, 0, -0.99871933, 0, -1.0786624, 0.2680931)
@@ -51,7 +53,7 @@ transform = Transform3D(-0.99871933, 0, -0.0505929, 0, 1, 0, 0.0505929, 0, -0.99
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9397836, -3.568399, 55.103436)
 
 [node name="Fish2" parent="." unique_id=777645399 instance=ExtResource("2_noarx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6511283, -5.652458, -39.27266)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6511283, -5.652458, -65.39132)
 
 [node name="Fish3" parent="." unique_id=2049857449 instance=ExtResource("2_noarx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45322943, -2.077139, 173.43544)
@@ -95,6 +97,8 @@ material_overlay = SubResource("StandardMaterial3D_i5arm")
 transparency = 0.5
 cast_shadow = 0
 size = Vector3(38.192, 25.457, 404.582)
+
+[node name="Node3D" type="Node3D" parent="Tube" unique_id=2044196865]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=706500385]
 environment = SubResource("Environment_wc5p8")
