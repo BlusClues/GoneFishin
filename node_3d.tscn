@@ -104,6 +104,12 @@ size = Vector3(38.192, 25.457, 404.582)
 environment = SubResource("Environment_wc5p8")
 compositor = SubResource("Compositor_jsk3o")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2083172018]
+transform = Transform3D(-0.99871933, 0, -0.050592836, 0, 1, 0, 0.050592836, 0, -0.99871933, 1.8902354, 8.587702, -292.15958)
+light_color = Color(0.8918808, 0.94845456, 0.7268696, 1)
+light_indirect_energy = 3.218
+sky_mode = 1
+
 [connection signal="dash_state_changed" from="Player" to="Timer" method="_on_player_dash_state_changed"]
 [connection signal="dash_state_changed" from="Player" to="SpeedLines" method="_on_player_dash_state_changed"]
 [connection signal="fish_eaten" from="Player/Area3D/CollisionShape3D" to="Timer" method="_on_collision_shape_3d_fish_eaten"]
