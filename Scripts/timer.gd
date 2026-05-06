@@ -33,8 +33,8 @@ func _process(delta):
 	stamina_bar.value = current_stamina
 	
 	#what happens when timer runs out
-	if current_stamina <= 0:
-		print("Timer Stop")
+	#if current_stamina <= 0:
+		#print("Timer Stop")
 
 #checks if the player is still dashing
 func _on_player_dash_state_changed(is_player_dashing: bool):
