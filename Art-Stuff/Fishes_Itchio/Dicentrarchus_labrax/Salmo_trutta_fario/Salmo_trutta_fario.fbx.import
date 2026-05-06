@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bxf1mqnxpivgw"
-path="res://.godot/imported/Salmo_trutta_fario.fbx-9630ca711dfbaa1070f0e6ec6ba8219c.scn"
+uid="uid://543c1djd1s0l"
+path="res://.godot/imported/Salmo_trutta_fario.fbx-c51a8c0069c9f23f5fb6723682cb65d5.scn"
 
 [deps]
 
-source_file="res://Art-Stuff/Fishes_Itchio/Salmo_trutta_fario/Salmo_trutta_fario.fbx"
-dest_files=["res://.godot/imported/Salmo_trutta_fario.fbx-9630ca711dfbaa1070f0e6ec6ba8219c.scn"]
+source_file="res://Art-Stuff/Fishes_Itchio/Dicentrarchus_labrax/Salmo_trutta_fario/Salmo_trutta_fario.fbx"
+dest_files=["res://.godot/imported/Salmo_trutta_fario.fbx-c51a8c0069c9f23f5fb6723682cb65d5.scn"]
 
 [params]
 
