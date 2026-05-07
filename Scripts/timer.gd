@@ -26,7 +26,7 @@ func _process(delta):
 	var speed = 1.0
 	
 	#switch to dashing rate
-	if is_dashing == true:
+	if is_dashing:
 		speed = dash_multiplier
 	
 	#make hunger tick down depending on rate

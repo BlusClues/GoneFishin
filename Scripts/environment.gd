@@ -37,7 +37,7 @@ func _process(delta):
 	
 	for fish in get_tree().get_nodes_in_group("fish"):
 		if player.global_position.z  < -65:
-			print("deleted")
+			#print("deleted")
 			remove_child(fish)
 			fish.queue_free()
 	

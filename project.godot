@@ -15,6 +15,15 @@ run/main_scene="res://node_3d.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[file_customization]
+
+folder_colors={
+"res://Art-Stuff/": "red",
+"res://Scenes/": "orange",
+"res://Scripts/": "yellow",
+"res://Sounds/": "green"
+}
+
 [filesystem]
 
 import/blender/enabled=false

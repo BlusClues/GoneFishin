@@ -11,12 +11,12 @@ extends Node3D
 @onready var fish9 = $Area3D/Seriola_dumerili
 @onready var fish_list = [fish1, fish2, fish3, fish4, fish5, fish6, fish7, fish8, fish9]
 
-
+#randomly pick a sprite to make visible from the list
 func _ready():
 	var fish_model = fish_list[randi_range(0, fish_list.size() - 1)]
-	
 	fish_model.visible = true
 
+#fish continuously move forward
 func _process(delta):
 	#swimming
 	var speed = randi_range(0, -20)
