@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://d23k6h33ofwqd" path="res://Scenes/GameOverScreen.tscn" id="7_4arys"]
 [ext_resource type="Script" uid="uid://b6ka11clegr0i" path="res://Scripts/environment.gd" id="8_jsk3o"]
 
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_jka67"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc5p8"]
@@ -62,8 +61,6 @@ transform = Transform3D(-0.99871933, 0, -0.050592836, 0, 1, 0, 0.050592836, 0, -
 stream = ExtResource("4_jsk3o")
 volume_db = -14.953
 autoplay = true
-
-[node name="RiverDashAMB" type="AudioStreamPlayer3D" parent="Player" unique_id=595618583]
 
 [node name="Fish1" parent="." unique_id=1202207361 instance=ExtResource("2_noarx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.9397836, -3.568399, 55.103436)
@@ -133,10 +130,8 @@ light_color = Color(0.8918808, 0.94845456, 0.7268696, 1)
 light_indirect_energy = 3.218
 sky_mode = 1
 
-[connection signal="RiverDashAMB" from="Player" to="Player" method="_on_river_dash_amb"]
 [connection signal="dash_state_changed" from="Player" to="Timer" method="_on_player_dash_state_changed"]
 [connection signal="dash_state_changed" from="Player" to="SpeedLines" method="_on_player_dash_state_changed"]
-[connection signal="finished" from="Player/RiverDashAMB" to="Player" method="_on_river_dash_amb_finished"]
 [connection signal="fish_eaten" from="Player/Mask/CollisionShape3D" to="Timer" method="_on_collision_shape_3d_fish_eaten"]
 [connection signal="lure_eaten" from="Player/Mask/CollisionShape3D" to="Player" method="_on_collision_shape_3d_lure_eaten"]
 [connection signal="lure_eaten" from="Player/Mask/CollisionShape3D" to="Timer" method="_on_collision_shape_3d_lure_eaten"]

@@ -2,7 +2,6 @@ extends StaticBody3D
 
 signal dash_state_changed(is_player_dashing: bool)
 
-signal RiverDashAMB (name)
 
 
 var dashing = false
@@ -43,9 +42,12 @@ func _process(delta):
 
 			#check if your current state matches saved state
 			if currently_dashing != dashing:
+				
 				dashing = currently_dashing
 				dash_state_changed.emit(dashing)
-				emit_signal("RiverDashAMB", "RiverDashAMB")
+				
+			
+		
 			
 			#dashing logic
 			if dashing:
