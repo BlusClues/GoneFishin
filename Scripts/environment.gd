@@ -7,7 +7,6 @@ var point_2: Vector3
 
 @onready var fishes: Resource = preload("res://Scenes/Fish.tscn")
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -22,7 +21,6 @@ func _ready() -> void:
 	spawn_fishes()
 	spawn_fishes()
 	spawn_fishes()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -40,7 +38,6 @@ func _process(delta):
 			#print("deleted")
 			remove_child(fish)
 			fish.queue_free()
-	
 
 func get_random_point_inside(p1: Vector3, p2: Vector3) -> Vector3:
 	

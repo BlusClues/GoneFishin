@@ -23,7 +23,7 @@ func _ready():
 func _process(delta):
 	#if lure is eaten
 	if hooked_on_lure == true:
-		if Input.is_action_just_pressed("Escape"):
+		#if Input.is_action_just_pressed("Escape"):
 			current_mash_amount = current_mash_amount + 1
 			if current_mash_amount >= mash_amount and escaped == false:
 				print("escaped!" + str(current_mash_amount))

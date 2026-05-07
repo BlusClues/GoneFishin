@@ -8,6 +8,7 @@ var stamina_time = 10
 var current_stamina
 var dash_multiplier = 2.0
 var is_dashing = false
+var ate_lure = false
 
 signal game_over
 
@@ -22,22 +23,23 @@ func _ready():
 	stamina_bar.value = stamina_time
 
 func _process(delta):
-	#normal rate 
-	var speed = 1.0
-	
-	#switch to dashing rate
-	if is_dashing:
-		speed = dash_multiplier
-	
-	#make hunger tick down depending on rate
-	current_stamina -= delta * speed
-	current_stamina = clamp(current_stamina, 0, stamina_time)
-	stamina_bar.value = current_stamina
-	
-	#what happens when timer runs out
-	if current_stamina <= 0:
-		#print("Timer Stop")
-		game_over.emit()
+	if !ate_lure:
+		#normal rate 
+		var speed = 1.0
+		
+		#switch to dashing rate
+		if is_dashing:
+			speed = dash_multiplier
+		
+		#make hunger tick down depending on rate
+		current_stamina -= delta * speed
+		current_stamina = clamp(current_stamina, 0, stamina_time)
+		stamina_bar.value = current_stamina
+		
+		#what happens when timer runs out
+		if current_stamina <= 0:
+			#print("Timer Stop")
+			game_over.emit()
 
 #checks if the player is still dashing
 func _on_player_dash_state_changed(is_player_dashing: bool):
@@ -55,8 +57,8 @@ func _on_collision_shape_3d_fish_eaten():
 		var tween = create_tween()
 		tween.tween_property(eaten_label, "modulate:a", 0.0, 2.0)
 
-#might not need since we would want a different script for the lure to make modular but fine for now
 #when you eat a lure reduce stamina
-func _on_lure_eaten():
+func _on_collision_shape_3d_lure_eaten():
 	print("Lure Eaten")
 	current_stamina -= 3
+	ate_lure = true
