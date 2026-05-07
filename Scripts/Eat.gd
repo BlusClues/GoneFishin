@@ -1,6 +1,6 @@
 extends CollisionShape3D
 
-var collect_range = 5.0
+var collect_range = 2.0
 signal fish_eaten
 signal lure_eaten
 # Called when the node enters the scene tree for the first time.

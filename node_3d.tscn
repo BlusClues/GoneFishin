@@ -1,15 +1,19 @@
 [gd_scene format=3 uid="uid://47owy5o10wt7"]
 
 [ext_resource type="Script" uid="uid://m047ifjfsaba" path="res://Scripts/player.gd" id="1_jka67"]
-[ext_resource type="Script" path="res://Scripts/Eat.gd" id="2_i5arm"]
+[ext_resource type="Script" uid="uid://b156qpbxjnmnl" path="res://Scripts/Eat.gd" id="2_i5arm"]
 [ext_resource type="PackedScene" uid="uid://b4n0vlqmevhis" path="res://Scenes/Fish.tscn" id="2_noarx"]
 [ext_resource type="PackedScene" uid="uid://b2yso33xe3x6i" path="res://Scenes/StaminaTimer.tscn" id="3_a0tk4"]
 [ext_resource type="PackedScene" uid="uid://duuup4xf7vlcv" path="res://Scenes/Lure.tscn" id="3_r3fl7"]
 [ext_resource type="PackedScene" uid="uid://bxf1mqnxpivgw" path="res://Art-Stuff/Fishes_Itchio/Salmo_trutta_fario/Salmo_trutta_fario.fbx" id="3_wc5p8"]
-[ext_resource type="PackedScene" path="res://Scenes/SpeedLines.tscn" id="6_wc5p8"]
-[ext_resource type="PackedScene" uid="uid://d23k6h33ofwqd" path="res://Scenes/GameOverScreen.tscn" id="7_jsk3o"]
+[ext_resource type="PackedScene" uid="uid://h87m70c4c8o3" path="res://Scenes/SpeedLines.tscn" id="6_wc5p8"]
+[ext_resource type="Script" uid="uid://b6ka11clegr0i" path="res://environment.gd" id="8_jsk3o"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jka67"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc5p8"]
+metallic = 1.0
+roughness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
 albedo_color = Color(0.040201943, 0.38719133, 0.10406857, 1)
@@ -25,6 +29,7 @@ ambient_light_energy = 0.0
 tonemap_exposure = 4.0
 fog_enabled = true
 fog_light_color = Color(0.011764706, 0.4117647, 0.28235295, 1)
+fog_density = 0.025
 volumetric_fog_albedo = Color(0.03137255, 0.3372549, 0.4117647, 1)
 volumetric_fog_emission = Color(0.07405893, 0.30377233, 0.18541217, 1)
 
@@ -36,34 +41,35 @@ volumetric_fog_emission = Color(0.07405893, 0.30377233, 0.18541217, 1)
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 4.918, 1.18, 200)
 script = ExtResource("1_jka67")
 
-[node name="Area3D" type="Area3D" parent="Player" unique_id=41779598]
+[node name="Mask" type="Area3D" parent="Player" unique_id=41779598]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 198.17232)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D" unique_id=1002879969]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Mask" unique_id=1002879969 groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9311886, -0.94366455)
 shape = SubResource("SphereShape3D_jka67")
 script = ExtResource("2_i5arm")
 
-[node name="Camera3D" type="Camera3D" parent="Player/Area3D" unique_id=1796331184]
+[node name="Camera3D" type="Camera3D" parent="Player/Mask" unique_id=1796331184]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 1.5068588, 0.71484375)
 
-[node name="Salmo_trutta_fario" parent="Player/Area3D/Camera3D" unique_id=1785995280 instance=ExtResource("3_wc5p8")]
+[node name="Salmo_trutta_fario" parent="Player/Mask/Camera3D" unique_id=1785995280 instance=ExtResource("3_wc5p8")]
 transform = Transform3D(-0.99871933, 0, -0.050592836, 0, 1, 0, 0.050592836, 0, -0.99871933, 0, -0.9104762, -0.14360046)
 
 [node name="Fish1" parent="." unique_id=1202207361 instance=ExtResource("2_noarx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9397836, -3.568399, 55.103436)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.9397836, -3.568399, 55.103436)
+visible = false
 
 [node name="Fish2" parent="." unique_id=777645399 instance=ExtResource("2_noarx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6511283, -5.652458, -65.39132)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 17.325432, -10.569133, -65.34376)
+visible = false
 
 [node name="Fish3" parent="." unique_id=2049857449 instance=ExtResource("2_noarx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45322943, -2.077139, 173.43544)
+transform = Transform3D(-1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, -1, -16.863115, -11.654995, 173.43544)
+visible = false
 
 [node name="Timer" parent="." unique_id=1399422570 instance=ExtResource("3_a0tk4")]
 
 [node name="SpeedLines" parent="." unique_id=1061225812 instance=ExtResource("6_wc5p8")]
-
-[node name="GameOverScreen" parent="." unique_id=1961954659 instance=ExtResource("7_jsk3o")]
 
 [node name="Lure" parent="." unique_id=685706361 instance=ExtResource("3_r3fl7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7210016, -1.7359166, 23.710508)
@@ -82,6 +88,7 @@ size = Vector3(0.194, 25.457, 404.582)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.308, -0.04, 0.098)
 use_collision = true
 size = Vector3(0.287, 25.457, 404.582)
+material = SubResource("StandardMaterial3D_wc5p8")
 
 [node name="Floor" type="CSGBox3D" parent="Tube" unique_id=1339368835]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.026, -12.501, 0.161)
@@ -98,8 +105,9 @@ size = Vector3(38.192, 0.433, 404.582)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042, 0, 0)
 material_overlay = SubResource("StandardMaterial3D_i5arm")
 transparency = 0.5
-cast_shadow = 0
+cast_shadow = 2
 size = Vector3(38.192, 25.457, 404.582)
+script = ExtResource("8_jsk3o")
 
 [node name="Node3D" type="Node3D" parent="Tube" unique_id=2044196865]
 
@@ -115,5 +123,4 @@ sky_mode = 1
 
 [connection signal="dash_state_changed" from="Player" to="Timer" method="_on_player_dash_state_changed"]
 [connection signal="dash_state_changed" from="Player" to="SpeedLines" method="_on_player_dash_state_changed"]
-[connection signal="fish_eaten" from="Player/Area3D/CollisionShape3D" to="Timer" method="_on_collision_shape_3d_fish_eaten"]
-[connection signal="game_over" from="Timer" to="GameOverScreen" method="_on_timer_game_over"]
+[connection signal="fish_eaten" from="Player/Mask/CollisionShape3D" to="Timer" method="_on_collision_shape_3d_fish_eaten"]

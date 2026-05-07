@@ -4,9 +4,12 @@ signal dash_state_changed(is_player_dashing: bool)
 
 var dashing = false
 
+
 #capture inputs
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
 
 #interpreting user inputs
 func _input(event):
@@ -42,3 +45,11 @@ func _process(delta):
 		#need to balance later!
 		position.z += (-20.0 * delta) * 2
 		pass
+		
+	
+	
+	
+	
+	
+	
+	
