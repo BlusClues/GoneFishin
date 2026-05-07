@@ -26,38 +26,33 @@ func _ready():
 	stamina_bar.value = stamina_time
 
 func _process(delta):
+	#normal rate 
+	var speed = 1.0
 	if !ate_lure:
-		#normal rate 
-		var speed = 1.0
-		
 		#switch to dashing rate
 		if is_dashing:
 			speed = dash_multiplier
-		
-		#make hunger tick down depending on rate
-		current_stamina -= delta * speed
-		current_stamina = clamp(current_stamina, 0, stamina_time)
-		stamina_bar.value = current_stamina
-		
-		#what happens when timer runs out
-		if current_stamina <= 0:
-			#print("Timer Stop")
-			game_over.emit()
-			
 	elif ate_lure:
 		#make the timer work but slower when hooked
-		var speed = 0.5
-		current_stamina -= delta * speed
-		current_stamina = clamp(current_stamina, 0, stamina_time)
-		stamina_bar.value = current_stamina
+		speed = 0.5
 		
 		#set the escape mashing bar
 		escape_bar.value = escape_button_presses
 		
+		#reset variables when the player escapes
 		if escape_button_presses >= max_escape_amount:
 			escape_panel.visible = false
 			escape_button_presses = 0.0
 			ate_lure = false
+	
+	#make hunger tick down depending on rate
+	current_stamina -= delta * speed
+	current_stamina = clamp(current_stamina, 0, stamina_time)
+	stamina_bar.value = current_stamina
+	
+	#what happens when timer runs out
+	if current_stamina <= 0:
+		game_over.emit()
 
 #checks if the player is still dashing
 func _on_player_dash_state_changed(is_player_dashing: bool):
@@ -78,7 +73,7 @@ func _on_collision_shape_3d_fish_eaten():
 func _on_collision_shape_3d_lure_eaten():
 	#when you eat a lure reduce stamina
 	print("Lure Eaten")
-	current_stamina -= 3
+	current_stamina -= 2.0
 	ate_lure = true
 	
 	escape_panel.visible = true
