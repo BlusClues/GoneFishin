@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4n0vlqmevhis"]
 
 [ext_resource type="Script" uid="uid://r48qtr28keq4" path="res://Scripts/area_3d.gd" id="1_8um3m"]
-[ext_resource type="Script" uid="uid://b5gdcs3kgjiwe" path="res://Scenes/fish.gd" id="1_bix4d"]
+[ext_resource type="Script" uid="uid://b5gdcs3kgjiwe" path="res://Scripts/fish.gd" id="1_bix4d"]
 [ext_resource type="PackedScene" uid="uid://c78xx87aruvb" path="res://Art-Stuff/Fishes_Itchio/Scomber_Scombrus/Scomber scrombus.fbx" id="2_556at"]
 [ext_resource type="PackedScene" uid="uid://bslesyqxiottk" path="res://Art-Stuff/Fishes_Itchio/Cobitis_paludica/Cobitis_paludica.fbx" id="2_two43"]
 [ext_resource type="PackedScene" uid="uid://dxqrvyutf6e14" path="res://Art-Stuff/Fishes_Itchio/Luciobarbus_guiranois/Luciobarbus guiranois.fbx" id="3_bix4d"]
