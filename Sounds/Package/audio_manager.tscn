@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://brxl4hnoj622h"]
+
+[ext_resource type="Script" uid="uid://cne4lxll6ujrb" path="res://Sounds/Package/audio_manager.gd" id="1_gk2q1"]
+[ext_resource type="Script" uid="uid://cadudw2ne6jwv" path="res://Sounds/Package/sfx_lib.gd" id="2_84m6x"]
+[ext_resource type="Script" uid="uid://b06pkxjrna4un" path="res://Sounds/Package/music_player.gd" id="3_2jb4o"]
+[ext_resource type="AudioStream" uid="uid://bi5l76ijr6smm" path="res://Sounds/DashRiverAMB.wav" id="3_f8pgc"]
+
+[sub_resource type="Resource" id="Resource_nyude"]
+metadata/__load_path__ = "res://Sound Shit/Sounds-at-nigh-simjoo-ambient.mp3"
+
+[node name="Audio_Manager" type="Node2D" unique_id=597260692]
+script = ExtResource("1_gk2q1")
+
+[node name="SFX_Lib" type="Node2D" parent="." unique_id=758639004]
+script = ExtResource("2_84m6x")
+sound_names = Array[String](["RiverDashAMB"])
+sound_files = Array[AudioStream]([ExtResource("3_f8pgc")])
+
+[node name="Music_Player" type="AudioStreamPlayer2D" parent="." unique_id=1668120822]
+script = ExtResource("3_2jb4o")
+DEFAULT_TRACK = SubResource("Resource_nyude")

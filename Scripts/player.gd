@@ -2,6 +2,9 @@ extends StaticBody3D
 
 signal dash_state_changed(is_player_dashing: bool)
 
+signal RiverDashAMB (name)
+
+
 var dashing = false
 
 #capture inputs
@@ -35,6 +38,8 @@ func _process(delta):
 	if currently_dashing != dashing:
 		dashing = currently_dashing
 		dash_state_changed.emit(dashing)
+		emit_signal("RiverDashAMB", "RiverDashAMB")
+	
 	
 	#dashing logic
 	if dashing == true:
@@ -42,3 +47,7 @@ func _process(delta):
 		#need to balance later!
 		position.z += (-20.0 * delta) * 2
 		pass
+
+
+
+	
