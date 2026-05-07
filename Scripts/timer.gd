@@ -1,14 +1,17 @@
 extends Node2D
 
-@onready var stamina_bar = $CanvasLayer/Panel/StaminaBar
-@onready var eaten_label = $CanvasLayer/Panel/EatenLabel
-@onready var timer = $Timer
+@onready var stamina_bar = $CanvasLayer/StaminaPanel/StaminaBar
+@onready var eaten_label = $CanvasLayer/StaminaPanel/EatenLabel
+@onready var escape_panel = $CanvasLayer/EscapePanel
+@onready var escape_bar = $CanvasLayer/EscapePanel/EscapeProgress
 
 var stamina_time = 10
 var current_stamina
 var dash_multiplier = 2.0
 var is_dashing = false
 var ate_lure = false
+var escape_button_presses = 0.0
+var max_escape_amount = 20
 
 signal game_over
 
@@ -40,6 +43,21 @@ func _process(delta):
 		if current_stamina <= 0:
 			#print("Timer Stop")
 			game_over.emit()
+			
+	elif ate_lure:
+		#make the timer work but slower when hooked
+		var speed = 0.5
+		current_stamina -= delta * speed
+		current_stamina = clamp(current_stamina, 0, stamina_time)
+		stamina_bar.value = current_stamina
+		
+		#set the escape mashing bar
+		escape_bar.value = escape_button_presses
+		
+		if escape_button_presses >= max_escape_amount:
+			escape_panel.visible = false
+			escape_button_presses = 0.0
+			ate_lure = false
 
 #checks if the player is still dashing
 func _on_player_dash_state_changed(is_player_dashing: bool):
@@ -57,8 +75,21 @@ func _on_collision_shape_3d_fish_eaten():
 		var tween = create_tween()
 		tween.tween_property(eaten_label, "modulate:a", 0.0, 2.0)
 
-#when you eat a lure reduce stamina
 func _on_collision_shape_3d_lure_eaten():
+	#when you eat a lure reduce stamina
 	print("Lure Eaten")
 	current_stamina -= 3
 	ate_lure = true
+	
+	escape_panel.visible = true
+
+#Counts how many button presses there have been
+func _on_player_current_button_presses(button_presses: float):
+	escape_button_presses = button_presses
+
+#gets the max number of button presses needed
+func _on_player_max_buttons_needed(max_amount_needed: float):
+	max_escape_amount = max_amount_needed
+	
+	#setting the mashing progress bar
+	escape_bar.max_value = max_escape_amount

@@ -4,19 +4,21 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h3sn8"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l0ydw"]
+
 [node name="StaminaTimer" type="Node2D" unique_id=1399422570]
 script = ExtResource("1_7jo7d")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=583069752]
 
-[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1750377986]
+[node name="StaminaPanel" type="Panel" parent="CanvasLayer" unique_id=1750377986]
 offset_left = 998.0
 offset_top = 10.0
 offset_right = 1038.0
 offset_bottom = 50.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_h3sn8")
 
-[node name="EatenLabel" type="Label" parent="CanvasLayer/Panel" unique_id=1990134030]
+[node name="EatenLabel" type="Label" parent="CanvasLayer/StaminaPanel" unique_id=1990134030]
 layout_mode = 0
 offset_left = 59.0
 offset_top = 2.0
@@ -24,7 +26,7 @@ offset_right = 99.0
 offset_bottom = 25.0
 text = "+5"
 
-[node name="StaminaLabel" type="Label" parent="CanvasLayer/Panel" unique_id=1671696143]
+[node name="StaminaLabel" type="Label" parent="CanvasLayer/StaminaPanel" unique_id=1671696143]
 layout_mode = 0
 offset_left = 39.0
 offset_top = 26.0
@@ -32,9 +34,32 @@ offset_right = 152.0
 offset_bottom = 85.0
 text = "Hunger"
 
-[node name="StaminaBar" type="ProgressBar" parent="CanvasLayer/Panel" unique_id=593377604]
+[node name="StaminaBar" type="ProgressBar" parent="CanvasLayer/StaminaPanel" unique_id=593377604]
 layout_mode = 0
 offset_top = 1.0
 offset_right = 137.0
 offset_bottom = 28.0
 show_percentage = false
+
+[node name="EscapePanel" type="Panel" parent="CanvasLayer" unique_id=684296198]
+visible = false
+offset_left = 347.0
+offset_top = 312.0
+offset_right = 833.0
+offset_bottom = 438.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_l0ydw")
+
+[node name="EscapeProgress" type="ProgressBar" parent="CanvasLayer/EscapePanel" unique_id=1289768778]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 482.0
+offset_bottom = 48.0
+show_percentage = false
+
+[node name="EscapeMessage" type="Label" parent="CanvasLayer/EscapePanel" unique_id=657990911]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 51.0
+offset_right = 334.0
+offset_bottom = 74.0
+text = "MASH SPACE TO ESCAPE!!!!!"

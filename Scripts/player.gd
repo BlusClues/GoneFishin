@@ -1,13 +1,17 @@
 extends StaticBody3D
 
 signal dash_state_changed(is_player_dashing: bool)
+signal current_button_presses(button_presses: float)
+signal max_buttons_needed(max_amount_needed: float)
 
 var dashing = false
 var is_game_paused = false
 var ate_lure = false
 var is_gameover = false
-var needed_escape_amount = 20
-var escape_button_presses = 0
+var needed_escape_amount = 20.0
+var escape_button_presses = 0.0
+var just_hooked = false
+var escape_timer = 200
 
 #capture inputs
 func _ready():
@@ -49,13 +53,32 @@ func _process(delta):
 				#need to balance later!
 				position.z += (-20.0 * delta) * 2
 		elif ate_lure:
+			escape_timer -= 1
+			
+			if just_hooked:
+				print("Justhokkoe")
+				max_buttons_needed.emit(needed_escape_amount)
+				current_button_presses.emit(escape_button_presses)
+				just_hooked = false
+			
 			#print("hooked")
 			if Input.is_action_just_pressed("Escape"):
 				print("Button pressed")
 				escape_button_presses += 1
+				current_button_presses.emit(escape_button_presses)
+			
+			if escape_timer <= 0:
+				print("1")
+				if escape_button_presses >= 0:
+					print("2")
+					escape_button_presses -= 1.0
+					current_button_presses.emit(escape_button_presses)
+					escape_timer = 200
 			
 			if escape_button_presses >= needed_escape_amount:
 				ate_lure = false
+				escape_button_presses = 0.0
+
 	else:
 		#return mouse if game is paused
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -66,13 +89,15 @@ func _on_game_over_screen_gameover_pause(is_gameover_paused: bool):
 
 #checks if you ate a lure
 func _on_collision_shape_3d_lure_eaten():
+	just_hooked = true
 	ate_lure = true
+
 
 
 #TODO
 #1 pause player and timer
 #2 track the amount of button presses
-#3 make graphic and progress bar come up with the amount of button presses needed
+#3 make graphic and progress bar come up with the amount of button presses needed\\\\\\\\
 #4 make it so button presses gradually goes down to encourage mashing
 #5 resume the player and timer
 #6 reward the player for escaping?
