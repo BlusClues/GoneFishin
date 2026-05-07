@@ -15,29 +15,22 @@ func _ready() -> void:
 	randomize()
 	point_1 = Vector3(-16.8, 9.5, 173.4)
 	point_2 = Vector3(16.8, -9.5, -65.3)
-	
-	spawn_fishes()
-	spawn_fishes()
-	spawn_fishes()
-	spawn_fishes()
-	spawn_fishes()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if player.global_position.z  > 195:
+	if player.global_position.z  > 199:
 		#print("reached")
 		spawn_fishes()
 		spawn_fishes()
 		spawn_fishes()
 		spawn_fishes()
 		spawn_fishes()
-	
-	for fish in get_tree().get_nodes_in_group("fish"):
-		if player.global_position.z  < -65:
-			#print("deleted")
-			remove_child(fish)
-			fish.queue_free()
+	for f in get_tree().get_nodes_in_group("fish"):
+		
+		if player.global_position.z < -70:
+			remove_child(f)
+			f.queue_free()
 
 func get_random_point_inside(p1: Vector3, p2: Vector3) -> Vector3:
 	

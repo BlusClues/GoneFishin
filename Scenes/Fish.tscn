@@ -16,13 +16,14 @@
 radius = 0.67440414
 
 [node name="Fish" type="Node3D" unique_id=1486037513 groups=["fish", "orbs"]]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_bix4d")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1202207361]
 script = ExtResource("1_8um3m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=632105981]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07559472, 0.89673233, 0.8621081)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.07559472, 0.89673233, 0.8621081)
 shape = SubResource("SphereShape3D_a0tk4")
 debug_color = Color(0.39999998, 0.7699999, 1, 0.41960785)
 
