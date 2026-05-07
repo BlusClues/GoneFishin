@@ -2,15 +2,8 @@
 
 [ext_resource type="Script" uid="uid://r48qtr28keq4" path="res://Scripts/area_3d.gd" id="1_0o64x"]
 [ext_resource type="Script" uid="uid://cgww4yovhwocl" path="res://Scripts/lure.gd" id="1_2pdm2"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
-emission_enabled = true
-emission = Color(0.9999998, 0.7059544, 0.3018203, 1)
-emission_energy_multiplier = 0.0
-grow = true
-
-[sub_resource type="SphereMesh" id="SphereMesh_noarx"]
-material = SubResource("StandardMaterial3D_noarx")
+[ext_resource type="PackedScene" uid="uid://kav7lppq2scq" path="res://Art-Stuff/Lure_1.glb" id="3_3rblq"]
+[ext_resource type="PackedScene" uid="uid://cokgl04rrxole" path="res://Art-Stuff/Lure_2.glb" id="4_82gsn"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a0tk4"]
 radius = 0.67440414
@@ -21,11 +14,15 @@ script = ExtResource("1_2pdm2")
 [node name="Area3D" type="Area3D" parent="." unique_id=1202207361]
 script = ExtResource("1_0o64x")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1196963956]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8290558, 0.87598264)
-mesh = SubResource("SphereMesh_noarx")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D/MeshInstance3D" unique_id=632105981]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07559472, 0.067676544, -0.013874531)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=632105981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07559472, 0.89673233, 0.8621081)
 shape = SubResource("SphereShape3D_a0tk4")
 debug_color = Color(0.39999998, 0.7699999, 1, 0.41960785)
+
+[node name="Lure_1" parent="Area3D" unique_id=1146366526 instance=ExtResource("3_3rblq")]
+transform = Transform3D(1.3113416e-07, 1, 4.371139e-08, 3.821371e-15, 4.371139e-08, -1, -1, 1.3113416e-07, 1.9106855e-15, -0.01550436, 2.3074353, 0.7893493)
+visible = false
+
+[node name="Lure_2" parent="Area3D" unique_id=949453966 instance=ExtResource("4_82gsn")]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 1.6043001, 0.78732926)
+visible = false
