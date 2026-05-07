@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://d23k6h33ofwqd"]
+
+[ext_resource type="Script" uid="uid://8001wep44cdi" path="res://Scripts/game_over_screen.gd" id="1_6a6fq"]
+
+[node name="GameOverScreen" type="Node2D" unique_id=1961954659]
+script = ExtResource("1_6a6fq")
+
+[node name="Control" type="Control" parent="." unique_id=1030896256]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 565.0
+offset_top = 212.0
+offset_right = 605.0
+offset_bottom = 252.0
+
+[node name="GameOverLabel" type="Label" parent="Control" unique_id=1695452041]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -38.0
+offset_right = 128.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(1, 0.003921569, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "GAME OVER 
+YOU DIED :("
+
+[node name="PlayAgain" type="Button" parent="Control" unique_id=434010434]
+layout_mode = 0
+offset_left = -21.0
+offset_top = 100.0
+offset_right = 74.0
+offset_bottom = 131.0
+text = "Play Again?"
+
+[node name="QuitGame" type="Button" parent="Control" unique_id=1447461366]
+layout_mode = 0
+offset_left = -21.0
+offset_top = 163.0
+offset_right = 71.0
+offset_bottom = 194.0
+text = "Quit Game"
+
+[connection signal="pressed" from="Control/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Control/QuitGame" to="." method="_on_quit_game_pressed"]

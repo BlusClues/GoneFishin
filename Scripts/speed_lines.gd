@@ -12,6 +12,9 @@ var line_list = []
 var line_ages = []
 var line_max_duration = 2.0
 var is_dashing = false
+var is_paused = false
+
+#TODO Make speed lines not go over the fish. fish area is banned!
 
 func _ready():
 	#make list of lines that need to be added
@@ -53,36 +56,39 @@ func _draw():
 		draw_line(new_start_pos, new_end_pos + new_start_pos, aged_line_colour, line_width)
 
 func _process(delta: float):
-	if is_dashing:
+	if !is_paused:
+		if is_dashing:
+			#age up the lines to add a bit of fade
+			for i in range(visible_lines):
+				line_ages[i] += delta
+				if line_ages[i] >= line_max_duration:
+					line_ages[i] = 0.0
+					line_list[i] = randi_range(0, num_lines * 2)
+			
+			#draw lines in one by one
+			time_interval += delta
+			if time_interval >= 0.3:
+				if visible_lines < num_lines:
+					visible_lines += 1
+					time_interval = 0.0
 
-		#age up the lines to add a bit of fade
-		for i in range(visible_lines):
-			line_ages[i] += delta
-			if line_ages[i] >= line_max_duration:
-				line_ages[i] = 0.0
-				line_list[i] = randi_range(0, num_lines * 2)
-		
-		#draw lines in one by one
-		time_interval += delta
-		if time_interval >= 0.3:
-			if visible_lines < num_lines:
-				visible_lines += 1
-				time_interval = 0.0
-		
-		queue_redraw()
-	else:
-		
-		#make the lines gradually fade after dashing
-		for i in range(visible_lines):
-			line_ages[i] += delta * 2
 			queue_redraw()
-		while visible_lines != 0 and (line_ages[0] >= line_max_duration):
-			line_list.pop_front()
-			line_ages.pop_front()
-			visible_lines -= 1
-			line_ages.append(0.0)
-			line_list.append(randi_range(0, num_lines))
+		else:
+			#make the lines gradually fade after dashing
+			for i in range(visible_lines):
+				line_ages[i] += delta * 2
+				queue_redraw()
+			while visible_lines != 0 and (line_ages[0] >= line_max_duration):
+				line_list.pop_front()
+				line_ages.pop_front()
+				visible_lines -= 1
+				line_ages.append(0.0)
+				line_list.append(randi_range(0, num_lines))
 
 #check if the player is currently dashing
 func _on_player_dash_state_changed(is_player_dashing: bool):
 	is_dashing = is_player_dashing
+
+#check if the game is paused
+func _on_game_over_screen_gameover_pause(is_gameover_paused: bool):
+	is_paused = is_gameover_paused
