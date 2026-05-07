@@ -58,6 +58,7 @@ func _draw():
 func _process(delta: float):
 	if !is_paused:
 		if is_dashing:
+			
 			#age up the lines to add a bit of fade
 			for i in range(visible_lines):
 				line_ages[i] += delta
@@ -71,7 +72,7 @@ func _process(delta: float):
 				if visible_lines < num_lines:
 					visible_lines += 1
 					time_interval = 0.0
-			
+
 			queue_redraw()
 		else:
 			#make the lines gradually fade after dashing

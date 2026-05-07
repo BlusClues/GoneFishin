@@ -4,6 +4,8 @@ signal dash_state_changed(is_player_dashing: bool)
 signal current_button_presses(button_presses: float)
 signal max_buttons_needed(max_amount_needed: float)
 
+
+
 var dashing = false
 var is_game_paused = false
 var ate_lure = false
@@ -44,8 +46,12 @@ func _process(delta):
 
 			#check if your current state matches saved state
 			if currently_dashing != dashing:
+				
 				dashing = currently_dashing
 				dash_state_changed.emit(dashing)
+				
+			
+		
 			
 			#dashing logic
 			if dashing:
