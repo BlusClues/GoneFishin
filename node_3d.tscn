@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b2yso33xe3x6i" path="res://Scenes/StaminaTimer.tscn" id="3_a0tk4"]
 [ext_resource type="PackedScene" uid="uid://duuup4xf7vlcv" path="res://Scenes/Lure.tscn" id="3_r3fl7"]
 [ext_resource type="PackedScene" uid="uid://bxf1mqnxpivgw" path="res://Art-Stuff/Fishes_Itchio/Salmo_trutta_fario/Salmo_trutta_fario.fbx" id="3_wc5p8"]
-[ext_resource type="PackedScene" uid="uid://h87m70c4c8o3" path="res://Scenes/SpeedLines.tscn" id="6_wc5p8"]
+[ext_resource type="PackedScene" path="res://Scenes/SpeedLines.tscn" id="6_wc5p8"]
 [ext_resource type="Script" uid="uid://b6ka11clegr0i" path="res://environment.gd" id="8_jsk3o"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jka67"]
