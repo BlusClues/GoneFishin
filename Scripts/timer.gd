@@ -52,6 +52,7 @@ func _process(delta):
 	
 	#what happens when timer runs out
 	if current_stamina <= 0:
+		escape_panel.visible = false
 		game_over.emit()
 
 #checks if the player is still dashing
@@ -62,13 +63,14 @@ func _on_player_dash_state_changed(is_player_dashing: bool):
 #signal from camera_3d
 func _on_collision_shape_3d_fish_eaten():
 	print("Fish Eaten")
-	current_stamina += 5
-	
-	#tween to make the text gradually fade
-	if (eaten_label.modulate.a == 0.0):
-		eaten_label.modulate.a = 1.0
-		var tween = create_tween()
-		tween.tween_property(eaten_label, "modulate:a", 0.0, 2.0)
+	if !ate_lure:
+		current_stamina += 5
+		
+		#tween to make the text gradually fade
+		if (eaten_label.modulate.a == 0.0):
+			eaten_label.modulate.a = 1.0
+			var tween = create_tween()
+			tween.tween_property(eaten_label, "modulate:a", 0.0, 2.0)
 
 func _on_collision_shape_3d_lure_eaten():
 	#when you eat a lure reduce stamina
