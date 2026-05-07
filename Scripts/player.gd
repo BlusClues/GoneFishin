@@ -4,8 +4,6 @@ signal dash_state_changed(is_player_dashing: bool)
 signal current_button_presses(button_presses: float)
 signal max_buttons_needed(max_amount_needed: float)
 
-
-
 var dashing = false
 var is_game_paused = false
 var ate_lure = false
@@ -13,7 +11,7 @@ var is_gameover = false
 var needed_escape_amount = 20.0
 var escape_button_presses = 0.0
 var just_hooked = false
-var escape_timer = 200
+var escape_timer = 25
 
 #capture inputs
 func _ready():
@@ -46,45 +44,43 @@ func _process(delta):
 
 			#check if your current state matches saved state
 			if currently_dashing != dashing:
-				
 				dashing = currently_dashing
 				dash_state_changed.emit(dashing)
 				
-			
-		
-			
 			#dashing logic
 			if dashing:
 				#Not sure how intense we want the dash but this works for now
 				#need to balance later!
 				position.z += (-20.0 * delta) * 2
 		elif ate_lure:
+			#timer for the fight back with mashing
 			escape_timer -= 1
 			
+			#send the info to the timer when first hooked
 			if just_hooked:
-				print("Justhokkoe")
 				max_buttons_needed.emit(needed_escape_amount)
 				current_button_presses.emit(escape_button_presses)
 				just_hooked = false
 			
-			#print("hooked")
+			#mashing function, checks if you clicked the mashing enough
 			if Input.is_action_just_pressed("Escape"):
 				print("Button pressed")
 				escape_button_presses += 1
 				current_button_presses.emit(escape_button_presses)
 			
+			#adds a fight back mechanic that reverses some button presses
+			#this encourages the player to mash
 			if escape_timer <= 0:
-				print("1")
 				if escape_button_presses >= 0:
-					print("2")
 					escape_button_presses -= 1.0
 					current_button_presses.emit(escape_button_presses)
-					escape_timer = 200
+					escape_timer = 25
 			
+			#what happens when the player escapes/ presses required amount
 			if escape_button_presses >= needed_escape_amount:
 				ate_lure = false
 				escape_button_presses = 0.0
-
+		
 	else:
 		#return mouse if game is paused
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -103,7 +99,8 @@ func _on_collision_shape_3d_lure_eaten():
 #TODO
 #1 pause player and timer
 #2 track the amount of button presses
-#3 make graphic and progress bar come up with the amount of button presses needed\\\\\\\\
+#3 make graphic and progress bar come up with the amount of button presses needed
 #4 make it so button presses gradually goes down to encourage mashing
+#TODO if timer runs out during mashing then player loses
 #5 resume the player and timer
 #6 reward the player for escaping?
