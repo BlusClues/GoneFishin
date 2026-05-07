@@ -9,7 +9,10 @@ func _ready():
 	var lure_model = lure_list[randi_range(0, lure_list.size() - 1)]
 	lure_model.visible = true
 
-
+func _process(delta):
+	#swimming
+	var speed = -10
+	position.z += speed * delta
 
 
 
