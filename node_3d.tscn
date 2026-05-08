@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://b4gqfsspivnfj" path="res://Sounds/RiverUnderwaterAMB.wav" id="4_jsk3o"]
 [ext_resource type="PackedScene" uid="uid://h87m70c4c8o3" path="res://Scenes/SpeedLines.tscn" id="6_wc5p8"]
 [ext_resource type="PackedScene" uid="uid://d23k6h33ofwqd" path="res://Scenes/GameOverScreen.tscn" id="7_4arys"]
-[ext_resource type="Script" path="res://Scripts/environment.gd" id="8_jsk3o"]
+[ext_resource type="Script" uid="uid://b6ka11clegr0i" path="res://Scripts/environment.gd" id="8_jsk3o"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jka67"]
 
@@ -57,7 +57,7 @@ script = ExtResource("1_jka67")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 198.17232)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Mask" unique_id=1002879969 groups=["Player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9311886, -0.94366455)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -111.108376, -0.9433594)
 shape = SubResource("SphereShape3D_jka67")
 script = ExtResource("2_i5arm")
 
@@ -146,6 +146,7 @@ sky_mode = 1
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1695056673]
 transform = Transform3D(0.99948865, -0.015496283, -0.027969377, 0.024803834, 0.92776257, 0.37234578, 0.020178964, -0.3728491, 0.92767256, 1.89, 19.658678, 300)
 light_color = Color(0.8918808, 0.94845456, 0.7268696, 1)
+light_energy = 0.208
 light_indirect_energy = 3.218
 sky_mode = 1
 
