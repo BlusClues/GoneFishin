@@ -11,7 +11,7 @@ var is_gameover = false
 var needed_escape_amount = 20.0
 var escape_button_presses = 0.0
 var just_hooked = false
-var escape_timer = 25
+var escape_timer = 0.5
 
 #capture inputs
 func _ready():
@@ -54,7 +54,7 @@ func _process(delta):
 				position.z += (-20.0 * delta) * 2
 		elif ate_lure:
 			#timer for the fight back with mashing
-			escape_timer -= 1
+			escape_timer -= delta
 			
 			#send the info to the timer when first hooked
 			if just_hooked:
@@ -70,11 +70,11 @@ func _process(delta):
 			
 			#adds a fight back mechanic that reverses some button presses
 			#this encourages the player to mash
-			if escape_timer <= 0:
+			if escape_timer <= 0.0:
 				if escape_button_presses >= 0:
-					escape_button_presses -= 1.0
+					escape_button_presses -= 1
 					current_button_presses.emit(escape_button_presses)
-					escape_timer = 25
+					escape_timer = 0.5
 			
 			#what happens when the player escapes/ presses required amount
 			if escape_button_presses >= needed_escape_amount:

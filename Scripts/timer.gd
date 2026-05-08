@@ -83,6 +83,7 @@ func _on_collision_shape_3d_lure_eaten():
 #Counts how many button presses there have been
 func _on_player_current_button_presses(button_presses: float):
 	escape_button_presses = button_presses
+	print(escape_button_presses)
 
 #gets the max number of button presses needed
 func _on_player_max_buttons_needed(max_amount_needed: float):

@@ -14,8 +14,6 @@ var line_max_duration = 2.0
 var is_dashing = false
 var is_paused = false
 
-#TODO Make speed lines not go over the fish. fish area is banned!
-
 func _ready():
 	#make list of lines that need to be added
 	for i in range(num_lines):
@@ -34,13 +32,17 @@ func _draw():
 	
 	#get the inital circle that is drawn from lines
 	for i in range(visible_lines):
+		#calculate the zone where lines shouldnt be
+		var line_list_progress = float(line_list[i]) / float(num_lines)
+		var safe_start_area = (3 * PI) / 4
+		var safe_end_area = (PI / 4) + (2 * PI)
+		var angle = lerp(safe_start_area, safe_end_area, line_list_progress)
+		
 		#calculate the alpha of the lines dependant on age
 		var alpha = 1.0 - (line_ages[i] / line_max_duration)
 		var aged_line_colour = Color(line_colour, alpha)
 		
 		#add and calculate normal lines around the circle
-		var target_slot = line_list[i]
-		var angle = target_slot * 2 * PI / num_lines
 		var center_pos = Vector2(screen_middle_x, screen_middle_y)
 		var start_pos = Vector2(cos(angle), sin(angle)) * radius
 		start_pos += center_pos
@@ -49,7 +51,9 @@ func _draw():
 		draw_line(start_pos, end_pos + start_pos, aged_line_colour, line_width)
 		
 		#add and calculate a few random lines to add a bit of variation to the mix
-		var new_angle = i * 2 * PI / max(1, line_list[i - 1])
+		var target_slot = line_list[i]
+		var new_line_list_progress = float(line_list[i] * target_slot) / float(num_lines * 3)
+		var new_angle = lerp(safe_start_area, safe_end_area, new_line_list_progress)
 		var new_start_pos = Vector2(cos(new_angle), sin(new_angle)) * radius
 		new_start_pos += center_pos
 		var new_end_pos = Vector2(cos(new_angle), sin(new_angle)) * (radius * 2)
@@ -64,7 +68,7 @@ func _process(delta: float):
 				line_ages[i] += delta
 				if line_ages[i] >= line_max_duration:
 					line_ages[i] = 0.0
-					line_list[i] = randi_range(0, num_lines * 2)
+					line_list[i] = randi_range(0, num_lines)
 			
 			#draw lines in one by one
 			time_interval += delta
