@@ -10,7 +10,7 @@ var ate_lure = false
 var is_gameover = false
 var needed_escape_amount = 20.0
 var escape_button_presses = 0.0
-var just_hooked = false
+var just_hooked = false  
 var escape_timer = 0.5
 
 #capture inputs
