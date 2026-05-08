@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://50l1kl4286qt"]
 
 [ext_resource type="PackedScene" uid="uid://gufui23pmu7y" path="res://Art-Stuff/dog_paw.glb" id="1_mvfj1"]
+[ext_resource type="Script" uid="uid://rupqtw0fjsfd" path="res://Scenes/paw.gd" id="1_vl78x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mvfj1"]
 size = Vector3(0.7385483, 1.0401611, 0.11721802)
 
 [node name="Paw" type="Node3D" unique_id=1087833949]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_vl78x")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1066365261]
 
@@ -15,3 +18,11 @@ shape = SubResource("BoxShape3D_mvfj1")
 
 [node name="Sketchfab_Scene" parent="Area3D" unique_id=1823283523 instance=ExtResource("1_mvfj1")]
 transform = Transform3D(2336.5322, 0, 0, 0, 1099.2089, 0, 0, 0, 436.27692, -0.11492434, 0, 0.88598126)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Area3D" unique_id=267066699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.812357, 19.961014)
+light_color = Color(0, 0, 0, 1)
+light_energy = 16.0
+light_indirect_energy = 2.481
+light_volumetric_fog_energy = 1.245
+light_specular = 4.259

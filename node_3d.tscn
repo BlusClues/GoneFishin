@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://47owy5o10wt7"]
 
 [ext_resource type="Script" uid="uid://m047ifjfsaba" path="res://Scripts/player.gd" id="1_jka67"]
-[ext_resource type="Script" uid="uid://b156qpbxjnmnl" path="res://Scripts/eat.gd" id="2_i5arm"]
+[ext_resource type="Script" uid="uid://b156qpbxjnmnl" path="res://Scripts/Eat.gd" id="2_i5arm"]
 [ext_resource type="PackedScene" uid="uid://b4n0vlqmevhis" path="res://Scenes/Fish.tscn" id="2_noarx"]
 [ext_resource type="PackedScene" uid="uid://b2yso33xe3x6i" path="res://Scenes/StaminaTimer.tscn" id="3_a0tk4"]
 [ext_resource type="PackedScene" uid="uid://duuup4xf7vlcv" path="res://Scenes/Lure.tscn" id="3_r3fl7"]
 [ext_resource type="PackedScene" uid="uid://bxf1mqnxpivgw" path="res://Art-Stuff/Fishes_Itchio/Salmo_trutta_fario/Salmo_trutta_fario.fbx" id="3_wc5p8"]
 [ext_resource type="AudioStream" uid="uid://b4gqfsspivnfj" path="res://Sounds/RiverUnderwaterAMB.wav" id="4_jsk3o"]
+[ext_resource type="PackedScene" uid="uid://50l1kl4286qt" path="res://Scenes/Paw.tscn" id="5_cdqbm"]
 [ext_resource type="PackedScene" uid="uid://h87m70c4c8o3" path="res://Scenes/SpeedLines.tscn" id="6_wc5p8"]
 [ext_resource type="PackedScene" uid="uid://d23k6h33ofwqd" path="res://Scenes/GameOverScreen.tscn" id="7_4arys"]
-[ext_resource type="Script" path="res://Scripts/environment.gd" id="8_jsk3o"]
+[ext_resource type="Script" uid="uid://b6ka11clegr0i" path="res://Scripts/environment.gd" id="8_jsk3o"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jka67"]
 
@@ -71,6 +72,10 @@ transform = Transform3D(-0.99871933, 0, -0.050592836, 0, 1, 0, 0.050592836, 0, -
 stream = ExtResource("4_jsk3o")
 volume_db = -14.953
 autoplay = true
+
+[node name="Paw" parent="." unique_id=1087833949 instance=ExtResource("5_cdqbm")]
+transform = Transform3D(-0.6999999, 1.2785763e-07, 1.6726176e-11, -1.0709922e-07, -0.835223, -0.016369667, -2.4884805e-09, -0.019537322, 0.6998086, 9.085991, 30.725128, 143.12999)
+visible = false
 
 [node name="Fish1" parent="." unique_id=1202207361 instance=ExtResource("2_noarx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.9397836, -3.568399, 55.103436)
