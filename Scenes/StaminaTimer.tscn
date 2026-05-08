@@ -6,6 +6,8 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l0ydw"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ob2on"]
+
 [node name="StaminaTimer" type="Node2D" unique_id=1399422570]
 script = ExtResource("1_7jo7d")
 
@@ -63,3 +65,34 @@ offset_top = 51.0
 offset_right = 334.0
 offset_bottom = 74.0
 text = "MASH SPACE TO ESCAPE!!!!!"
+
+[node name="PointsPanel" type="Panel" parent="CanvasLayer" unique_id=1653787922]
+offset_left = 11.0
+offset_right = 51.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ob2on")
+
+[node name="PointsLabel" type="Label" parent="CanvasLayer/PointsPanel" unique_id=1689829608]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "Points: 10000"
+
+[node name="FishPointIncreaseLabel" type="Label" parent="CanvasLayer/PointsPanel" unique_id=230908415]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 33.0
+offset_right = 177.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 24
+text = "+ 100"
+
+[node name="LureEscapeIncreaseLabel" type="Label" parent="CanvasLayer/PointsPanel" unique_id=340328712]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 34.0
+offset_right = 177.0
+offset_bottom = 68.0
+theme_override_font_sizes/font_size = 24
+text = "+ 200"

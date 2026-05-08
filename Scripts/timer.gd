@@ -4,22 +4,39 @@ extends Node2D
 @onready var eaten_label = $CanvasLayer/StaminaPanel/EatenLabel
 @onready var escape_panel = $CanvasLayer/EscapePanel
 @onready var escape_bar = $CanvasLayer/EscapePanel/EscapeProgress
+@onready var points_label = $CanvasLayer/PointsPanel/PointsLabel
+@onready var fish_point_label = $CanvasLayer/PointsPanel/FishPointIncreaseLabel
+@onready var escape_point_label = $CanvasLayer/PointsPanel/LureEscapeIncreaseLabel
 
 var stamina_time = 10
 var current_stamina
-var dash_multiplier = 2.0
 var is_dashing = false
 var ate_lure = false
 var escape_button_presses = 0.0
 var max_escape_amount = 20
+var current_points = 0
+var points_timer
+var just_dashed
+var tween_points
+var tween_stamina
+
+const DASH_MULTIPLIER = 2.0
+const FISH_POINT_INCREASE = 100
+const POINTS_TIMER_INCREMENT_SPEED = 0.1
+const STAMINA_FISH_INCREASE_TIME = 5.0
+const STAMINA_LURE_DECREASE_TIME = 2.0
+const LURE_ESCAPE_INCREASE = 200
 
 signal game_over
 
 func _ready():
+	points_timer = POINTS_TIMER_INCREMENT_SPEED
 	current_stamina = stamina_time
 	
 	#set the eaten label to invisible
 	eaten_label.modulate.a = 0.0
+	fish_point_label.modulate.a = 0.0
+	escape_point_label.modulate.a = 0.0
 	
 	#initalize the progress bar
 	stamina_bar.max_value = stamina_time
@@ -27,14 +44,17 @@ func _ready():
 
 func _process(delta):
 	#normal rate 
-	var speed = 1.0
+	var countdown_speed = 1.0
 	if !ate_lure:
 		#switch to dashing rate
 		if is_dashing:
-			speed = dash_multiplier
+			countdown_speed = DASH_MULTIPLIER
+			just_dashed = true
+		elif !is_dashing:
+			just_dashed = false
 	elif ate_lure:
 		#make the timer work but slower when hooked
-		speed = 0.5
+		countdown_speed = 0.5
 		
 		#set the escape mashing bar
 		escape_bar.value = escape_button_presses
@@ -44,16 +64,34 @@ func _process(delta):
 			escape_panel.visible = false
 			escape_button_presses = 0.0
 			ate_lure = false
+			
+			current_points += LURE_ESCAPE_INCREASE
+			escape_point_label.modulate.a = 1.0
+			tween_points = create_tween()
+			tween_points.tween_property(escape_point_label, "modulate:a", 0.0, 2.0)
+			
 	
 	#make hunger tick down depending on rate
-	current_stamina -= delta * speed
+	current_stamina -= delta * countdown_speed
 	current_stamina = clamp(current_stamina, 0, stamina_time)
 	stamina_bar.value = current_stamina
+	
+	#make the points increase with time
+	points_timer -= delta
+	if points_timer <= 0:
+		current_points += 1
+		if !just_dashed:
+			points_timer = POINTS_TIMER_INCREMENT_SPEED
+		elif just_dashed:
+			points_timer = POINTS_TIMER_INCREMENT_SPEED / 2
 	
 	#what happens when timer runs out
 	if current_stamina <= 0:
 		escape_panel.visible = false
 		game_over.emit()
+	else:
+		#update the points label
+		points_label.text = "Points: " + str(current_points)
 
 #checks if the player is still dashing
 func _on_player_dash_state_changed(is_player_dashing: bool):
@@ -64,18 +102,31 @@ func _on_player_dash_state_changed(is_player_dashing: bool):
 func _on_collision_shape_3d_fish_eaten():
 	print("Fish Eaten")
 	if !ate_lure:
-		current_stamina += 5
+		#increase points and stamina
+		current_stamina += STAMINA_FISH_INCREASE_TIME
+		current_points += FISH_POINT_INCREASE
 		
-		#tween to make the text gradually fade
-		if (eaten_label.modulate.a == 0.0):
-			eaten_label.modulate.a = 1.0
-			var tween = create_tween()
-			tween.tween_property(eaten_label, "modulate:a", 0.0, 2.0)
+		#kill current tween if it currently exists
+		if tween_points and tween_points.is_running():
+			tween_points.kill()
+		
+		#tween to make the text gradually fade for points
+		fish_point_label.modulate.a = 1.0
+		tween_points = create_tween()
+		tween_points.tween_property(fish_point_label, "modulate:a", 0.0, 2.0)
+		
+		if tween_stamina and tween_stamina.is_running():
+			tween_stamina.kill()
+		
+		#tween to make the text gradually fade for stamina
+		eaten_label.modulate.a = 1.0
+		tween_stamina = create_tween()
+		tween_stamina.tween_property(eaten_label, "modulate:a", 0.0, 2.0)
 
 func _on_collision_shape_3d_lure_eaten():
 	#when you eat a lure reduce stamina
 	print("Lure Eaten")
-	current_stamina -= 2.0
+	current_stamina -= STAMINA_LURE_DECREASE_TIME
 	ate_lure = true
 	
 	escape_panel.visible = true
