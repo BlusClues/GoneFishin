@@ -24,10 +24,12 @@ debug_color = Color(0.39999998, 0.7699999, 1, 0.41960785)
 transform = Transform3D(1.3113416e-07, 1, 4.371139e-08, 3.821371e-15, 4.371139e-08, -1, -1, 1.3113416e-07, 1.9106855e-15, -0.01550436, 2.3074353, 0.7893493)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Area3D/Lure_1" unique_id=1951767973]
-transform = Transform3D(1, 0, 4.2351647e-22, 0, 1, -8.351871e-23, 0, -8.351871e-23, 1, 1.6883568, 1.1920929e-07, 1.3699164)
-light_energy = 6.222
-light_size = 0.051
-light_specular = 3.111
+transform = Transform3D(1, 0, 4.2351647e-22, 0, 1, -8.351871e-23, 0, -8.351871e-23, 1, 1.6883568, 1.13621354e-07, 1.5127296)
+light_color = Color(1, 1, 0.05882353, 1)
+light_energy = 3.46
+light_indirect_energy = 0.556
+light_size = 0.023
+light_specular = 2.222
 distance_fade_begin = 0.0
 omni_range = 3.674
 
@@ -35,8 +37,9 @@ omni_range = 3.674
 transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 1.6043001, 0.78732926)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Area3D/Lure_2" unique_id=1672495451]
-transform = Transform3D(1, 0, 4.2351647e-22, 0, 1, -7.5166837e-22, 0, -7.5166837e-22, 1, 1.6946461, 5.5705577e-08, 0.654968)
-light_energy = 6.222
-light_size = 0.051
+transform = Transform3D(1, 0, 4.2351647e-22, 0, 1, -7.5166837e-22, 0, -7.5166837e-22, 1, 1.4536088, 2.9772131e-08, 0.78479195)
+light_color = Color(0.80784315, 0.95686275, 0.41960785, 1)
+light_energy = 10.815
+light_size = 0.032
 light_specular = 3.01
 omni_range = 3.674
