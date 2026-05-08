@@ -93,14 +93,3 @@ func _on_game_over_screen_gameover_pause(is_gameover_paused: bool):
 func _on_collision_shape_3d_lure_eaten():
 	just_hooked = true
 	ate_lure = true
-
-
-
-#TODO
-#1 pause player and timer
-#2 track the amount of button presses
-#3 make graphic and progress bar come up with the amount of button presses needed
-#4 make it so button presses gradually goes down to encourage mashing
-#TODO if timer runs out during mashing then player loses
-#5 resume the player and timer
-#6 reward the player for escaping?
