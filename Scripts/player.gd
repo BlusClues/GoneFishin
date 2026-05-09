@@ -42,7 +42,7 @@ func _process(delta):
 			#dashing
 			var currently_dashing = Input.is_action_pressed("Dash")
 
-			#check if your current state matches saved state
+			#wcheck if your current state matches saved state
 			if currently_dashing != dashing:
 				dashing = currently_dashing
 				dash_state_changed.emit(dashing)
