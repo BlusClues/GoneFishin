@@ -6,8 +6,6 @@ var line_colour = Color.WHITE
 var line_width = 2.0
 var visible_lines = 0
 var time_interval = 0.0
-var window_width = DisplayServer.window_get_size().x
-var window_height = DisplayServer.window_get_size().y
 var line_list = []
 var line_ages = []
 var line_max_duration = 2.0
@@ -27,8 +25,9 @@ func _ready():
 #draw lines in a circle
 func _draw():
 	#get middle of the screen
-	var screen_middle_x = window_width / 2 
-	var screen_middle_y = window_height / 2
+	var viewport_size = get_viewport_rect().size
+	var screen_middle_x = viewport_size.x / 2 
+	var screen_middle_y = viewport_size.y / 2
 	
 	#get the inital circle that is drawn from lines
 	for i in range(visible_lines):

@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://8vj4bqpd2aco" path="res://Art-Stuff/textures/Rocks008_2K-JPG/Rocks008_2K-JPG_Displacement.jpg" id="13_tuemg"]
 [ext_resource type="Texture2D" uid="uid://xm4d8fjtp147" path="res://Art-Stuff/textures/Rocks008_2K-JPG/Rocks008_2K-JPG_Roughness.jpg" id="14_tuemg"]
 [ext_resource type="Texture2D" uid="uid://byaxc0huy2nic" path="res://Art-Stuff/textures/Ice003_2K-JPG/Ice003_2K-JPG_NormalGL.jpg" id="16_ealrb"]
-[ext_resource type="Script" uid="uid://v7uaa7kiwtwt" path="res://ceiling.gd" id="17_jsnrv"]
+[ext_resource type="Script" uid="uid://v7uaa7kiwtwt" path="res://Scripts/ceiling.gd" id="17_jsnrv"]
 [ext_resource type="Texture2D" uid="uid://dk674lhrjgsef" path="res://Art-Stuff/environment/EveningSkyHDRI032A_2K/EveningSkyHDRI032A_2K_HDR.exr" id="17_tuemg"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jka67"]
