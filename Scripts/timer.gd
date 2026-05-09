@@ -19,6 +19,10 @@ var points_timer
 var just_dashed
 var tween_points
 var tween_stamina
+var fish_eaten_num = 0
+var double_points = false
+var double_points_timer
+var points_rate = 1.0
 
 const DASH_MULTIPLIER = 2.0
 const FISH_POINT_INCREASE = 100
@@ -26,8 +30,10 @@ const POINTS_TIMER_INCREMENT_SPEED = 0.1
 const STAMINA_FISH_INCREASE_TIME = 5.0
 const STAMINA_LURE_DECREASE_TIME = 2.0
 const LURE_ESCAPE_INCREASE = 200
+const DOUBLE_POINTS_TIMER_DEFAULT = 20.0 # ~20 seconds
 
 signal game_over
+signal gain_buff
 
 func _ready():
 	points_timer = POINTS_TIMER_INCREMENT_SPEED
@@ -65,7 +71,7 @@ func _process(delta):
 			escape_button_presses = 0.0
 			ate_lure = false
 			
-			current_points += LURE_ESCAPE_INCREASE
+			current_points += LURE_ESCAPE_INCREASE * points_rate
 			escape_point_label.modulate.a = 1.0
 			tween_points = create_tween()
 			tween_points.tween_property(escape_point_label, "modulate:a", 0.0, 2.0)
@@ -76,10 +82,17 @@ func _process(delta):
 	current_stamina = clamp(current_stamina, 0, stamina_time)
 	stamina_bar.value = current_stamina
 	
+	#activate double points buff
+	if double_points:
+		double_points_timer -= delta
+		if double_points_timer <= 0:
+			double_points = false
+			points_rate = 1.0
+	
 	#make the points increase with time
 	points_timer -= delta
 	if points_timer <= 0:
-		current_points += 1
+		current_points += 1 * points_rate
 		if !just_dashed:
 			points_timer = POINTS_TIMER_INCREMENT_SPEED
 		elif just_dashed:
@@ -104,7 +117,7 @@ func _on_collision_shape_3d_fish_eaten():
 	if !ate_lure:
 		#increase points and stamina
 		current_stamina += STAMINA_FISH_INCREASE_TIME
-		current_points += FISH_POINT_INCREASE
+		current_points += FISH_POINT_INCREASE * points_rate
 		
 		#kill current tween if it currently exists
 		if tween_points and tween_points.is_running():
@@ -122,6 +135,12 @@ func _on_collision_shape_3d_fish_eaten():
 		eaten_label.modulate.a = 1.0
 		tween_stamina = create_tween()
 		tween_stamina.tween_property(eaten_label, "modulate:a", 0.0, 2.0)
+		
+		#track the amount of fish eaten
+		fish_eaten_num += 1
+		print(fish_eaten_num)
+		if fish_eaten_num % 5 == 0:
+			gain_buff.emit()
 
 func _on_collision_shape_3d_lure_eaten():
 	#when you eat a lure reduce stamina
@@ -142,3 +161,9 @@ func _on_player_max_buttons_needed(max_amount_needed: float):
 	
 	#setting the mashing progress bar
 	escape_bar.max_value = max_escape_amount
+
+#check if the double points buff was chosen
+func _on_buff_cards_buff_double_points():
+	double_points = true
+	points_rate = 2.0
+	double_points_timer = DOUBLE_POINTS_TIMER_DEFAULT

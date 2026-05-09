@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://47owy5o10wt7"]
 
 [ext_resource type="Script" uid="uid://m047ifjfsaba" path="res://Scripts/player.gd" id="1_jka67"]
-[ext_resource type="Script" uid="uid://b156qpbxjnmnl" path="res://Scripts/Eat.gd" id="2_i5arm"]
+[ext_resource type="Script" uid="uid://b156qpbxjnmnl" path="res://Scripts/eat.gd" id="2_i5arm"]
 [ext_resource type="PackedScene" uid="uid://b4n0vlqmevhis" path="res://Scenes/Fish.tscn" id="2_noarx"]
 [ext_resource type="PackedScene" uid="uid://b2yso33xe3x6i" path="res://Scenes/StaminaTimer.tscn" id="3_a0tk4"]
 [ext_resource type="PackedScene" uid="uid://duuup4xf7vlcv" path="res://Scenes/Lure.tscn" id="3_r3fl7"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://h87m70c4c8o3" path="res://Scenes/SpeedLines.tscn" id="6_wc5p8"]
 [ext_resource type="PackedScene" uid="uid://d23k6h33ofwqd" path="res://Scenes/GameOverScreen.tscn" id="7_4arys"]
 [ext_resource type="Script" uid="uid://b6ka11clegr0i" path="res://Scripts/environment.gd" id="8_jsk3o"]
+[ext_resource type="PackedScene" uid="uid://farpngci1yu7" path="res://Scenes/BuffCards.tscn" id="10_cdqbm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jka67"]
 
@@ -95,6 +96,8 @@ visible = false
 
 [node name="GameOverScreen" parent="." unique_id=1961954659 instance=ExtResource("7_4arys")]
 
+[node name="BuffCards" parent="." unique_id=1238883707 instance=ExtResource("10_cdqbm")]
+
 [node name="Lure" parent="." unique_id=685706361 instance=ExtResource("3_r3fl7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7210016, -1.7359166, 23.710508)
 visible = false
@@ -162,6 +165,10 @@ sky_mode = 1
 [connection signal="fish_eaten" from="Player/Mask/CollisionShape3D" to="Timer" method="_on_collision_shape_3d_fish_eaten"]
 [connection signal="lure_eaten" from="Player/Mask/CollisionShape3D" to="Player" method="_on_collision_shape_3d_lure_eaten"]
 [connection signal="lure_eaten" from="Player/Mask/CollisionShape3D" to="Timer" method="_on_collision_shape_3d_lure_eaten"]
+[connection signal="gain_buff" from="Timer" to="BuffCards" method="_on_timer_gain_buff"]
 [connection signal="game_over" from="Timer" to="GameOverScreen" method="_on_timer_game_over"]
 [connection signal="gameover_pause" from="GameOverScreen" to="Player" method="_on_game_over_screen_gameover_pause"]
 [connection signal="gameover_pause" from="GameOverScreen" to="SpeedLines" method="_on_game_over_screen_gameover_pause"]
+[connection signal="gameover_pause" from="GameOverScreen" to="BuffCards" method="_on_game_over_screen_gameover_pause"]
+[connection signal="buff_double_points" from="BuffCards" to="Timer" method="_on_buff_cards_buff_double_points"]
+[connection signal="buff_pause" from="BuffCards" to="Player" method="_on_buff_cards_buff_pause"]

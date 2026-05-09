@@ -1,6 +1,7 @@
 extends Node2D
 
 var is_gameover = false
+var sent_signal = false
 
 signal gameover_pause(is_gameover_paused: bool)
 
@@ -9,9 +10,10 @@ func _ready():
 	self.visible = false
 
 func _process(delta: float):
-	if is_gameover:
+	if is_gameover and !sent_signal:
 		self.visible = true
 		gameover_pause.emit(is_gameover)
+		sent_signal = true
 
 #replay if press play again
 func _on_play_again_pressed() -> void:
