@@ -8,7 +8,6 @@ extends Node2D
 @onready var fish_point_label = $CanvasLayer/PointsPanel/FishPointIncreaseLabel
 @onready var escape_point_label = $CanvasLayer/PointsPanel/LureEscapeIncreaseLabel
 
-var stamina_time = 10
 var current_stamina
 var is_dashing = false
 var ate_lure = false
@@ -24,7 +23,9 @@ var double_points = false
 var double_points_timer
 var points_rate = 1.0
 var lure_escape_cards = 0
+var stomach_size = 1.0
 
+const STAMINA_TIME = 10
 const DASH_MULTIPLIER = 2.0
 const FISH_POINT_INCREASE = 100
 const POINTS_TIMER_INCREMENT_SPEED = 0.1
@@ -38,7 +39,7 @@ signal gain_buff
 
 func _ready():
 	points_timer = POINTS_TIMER_INCREMENT_SPEED
-	current_stamina = stamina_time
+	current_stamina = STAMINA_TIME
 	
 	#set the eaten label to invisible
 	eaten_label.modulate.a = 0.0
@@ -46,8 +47,8 @@ func _ready():
 	escape_point_label.modulate.a = 0.0
 	
 	#initalize the progress bar
-	stamina_bar.max_value = stamina_time
-	stamina_bar.value = stamina_time
+	stamina_bar.max_value = STAMINA_TIME
+	stamina_bar.value = STAMINA_TIME
 
 func _process(delta):
 	#normal rate 
@@ -80,7 +81,7 @@ func _process(delta):
 	
 	#make hunger tick down depending on rate
 	current_stamina -= delta * countdown_speed
-	current_stamina = clamp(current_stamina, 0, stamina_time)
+	current_stamina = clamp(current_stamina, 0, STAMINA_TIME * stomach_size)
 	stamina_bar.value = current_stamina
 	
 	#activate double points buff
@@ -175,3 +176,9 @@ func _on_buff_cards_buff_double_points():
 #checks if you have chosen the next lure free buff
 func _on_buff_cards_buff_next_lure_free():
 	lure_escape_cards += 1
+
+#checks if you have chosen the bigger stomach buff
+func _on_buff_cards_buff_bigger_stomach():
+	stomach_size += 0.1
+	stamina_bar.max_value = STAMINA_TIME * stomach_size
+	print(stamina_bar.max_value)

@@ -18,6 +18,7 @@ var buff_library = {}
 signal buff_pause(is_paused: bool)
 signal buff_double_points()
 signal buff_next_lure_free()
+signal buff_bigger_stomach()
 
 func _ready():
 	#gather the json data
@@ -45,7 +46,7 @@ func load_json_file(path: String):
 func update_cards():
 	#get random numbers for the buffs
 	#card1_id = randi_range(1, 7)
-	card1_id = 1
+	card1_id = 2
 	card2_id = randi_range(1, 7)
 	
 	#choose random buffs
@@ -77,6 +78,8 @@ func process_chosen_buff(id: int):
 	match id:
 		1:
 			buff_next_lure_free.emit()
+		2:
+			buff_bigger_stomach.emit()
 		5:
 			buff_double_points.emit()
 
