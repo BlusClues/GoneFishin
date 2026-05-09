@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://d4mws61avpffq"]
+
+[ext_resource type="Script" uid="uid://bl2b32p3ul7b" path="res://Scenes/main_menu.gd" id="1_28flt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erv1k"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="MainMenu" type="Control" unique_id=224877852]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_28flt")
+
+[node name="Panel" type="Panel" parent="." unique_id=1788097966]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 51.0
+offset_right = 1104.0
+offset_bottom = 615.0
+
+[node name="Button" type="Button" parent="." unique_id=2049898460]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = 62.0
+offset_right = 154.7143
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 37
+theme_override_styles/normal = SubResource("StyleBoxFlat_erv1k")
+text = "Start Game"
+
+[node name="Label" type="Label" parent="." unique_id=1839911524]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -92.0
+offset_right = 129.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "ROE LIKE"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

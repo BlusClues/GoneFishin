@@ -43,7 +43,7 @@ func _input(event):
 			global_position.x = clamp(global_position.x, -17.0, 17.0)
 			global_position.y = clamp(global_position.y, -10.0, 10.0)
 			
-		if event is InputEventKey and event.keycode == KEY_R:
+		if event is InputEventKey and event.keycode == KEY_P:
 			get_tree().quit()
 
 func _process(delta):

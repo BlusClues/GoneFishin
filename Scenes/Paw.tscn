@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://50l1kl4286qt"]
 
 [ext_resource type="PackedScene" uid="uid://gufui23pmu7y" path="res://Art-Stuff/dog_paw.glb" id="1_mvfj1"]
-[ext_resource type="Script" uid="uid://rupqtw0fjsfd" path="res://Scenes/paw.gd" id="1_vl78x"]
+[ext_resource type="Script" uid="uid://rupqtw0fjsfd" path="res://Scripts/paw.gd" id="1_vl78x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mvfj1"]
 size = Vector3(0.7385483, 1.0401611, 0.11721802)
