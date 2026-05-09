@@ -1,9 +1,5 @@
 extends StaticBody3D
 
-#@onready var fish_model = $Player/Mask/Camera3D/Salmo_trutta_fario
-#@onready var collider = $Player/Mask/CollisionShape3D
-
-
 signal dash_state_changed(is_player_dashing: bool)
 signal current_button_presses(button_presses: float)
 signal max_buttons_needed(max_amount_needed: float)
@@ -20,11 +16,13 @@ var lure_escape_cards = 0
 var evasion_chance = 0
 var size_increase = 1
 var num_of_size_increases = 0
+var sensitivity_rate = 1
 
 const NEEDED_ESCAPE_AMOUNT = 20.0
 const ESCAPE_TIMER_DEFAULT = 0.5
 const EVASION_MAX = 100
 const SIZE_INCREASE_RATE = 0.1
+const SENSITIVITY_INCREASE_RATE = 0.1
 
 #capture inputs
 func _ready():
@@ -35,8 +33,8 @@ func _ready():
 func _input(event):
 	if !is_game_paused:
 		if event is InputEventMouseMotion:
-			position.x += event.relative.x * 0.005
-			position.y -= event.relative.y * 0.005
+			position.x += event.relative.x * 0.005 * sensitivity_rate
+			position.y -= event.relative.y * 0.005 * sensitivity_rate
 			
 			global_position.x = clamp(global_position.x, -17.0, 17.0)
 			global_position.y = clamp(global_position.y, -10.0, 10.0)
@@ -147,3 +145,7 @@ func _on_buff_cards_buff_size_increase():
 	var mask_node = get_node_or_null("Mask")
 	mask_node.scale = Vector3.ONE * size_increase
 	print("new scale: ", mask_node.scale)
+
+#checks if you have chosen the size increase buff
+func _on_buff_cards_buff_increase_manuverability():
+	sensitivity_rate += SENSITIVITY_INCREASE_RATE

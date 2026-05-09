@@ -173,6 +173,7 @@ sky_mode = 1
 [connection signal="gameover_pause" from="GameOverScreen" to="BuffCards" method="_on_game_over_screen_gameover_pause"]
 [connection signal="buff_bigger_stomach" from="BuffCards" to="Timer" method="_on_buff_cards_buff_bigger_stomach"]
 [connection signal="buff_double_points" from="BuffCards" to="Timer" method="_on_buff_cards_buff_double_points"]
+[connection signal="buff_increase_manuverability" from="BuffCards" to="Player" method="_on_buff_cards_buff_increase_manuverability"]
 [connection signal="buff_next_lure_free" from="BuffCards" to="Player" method="_on_buff_cards_buff_next_lure_free"]
 [connection signal="buff_next_lure_free" from="BuffCards" to="Timer" method="_on_buff_cards_buff_next_lure_free"]
 [connection signal="buff_pause" from="BuffCards" to="Player" method="_on_buff_cards_buff_pause"]
