@@ -1,9 +1,12 @@
 extends StaticBody3D
 
+@onready var audio_manager = $Player/AudioManager
+
 signal dash_state_changed(is_player_dashing: bool)
 signal current_button_presses(button_presses: float)
 signal max_buttons_needed(max_amount_needed: float)
 signal evaded_lure()
+signal play_dash_sound()
 
 var dashing = false
 var is_game_paused = false
@@ -54,7 +57,7 @@ func _process(delta):
 			
 			#dashing
 			var currently_dashing = Input.is_action_pressed("Dash")
-	
+			
 			#check if your current state matches saved state
 			if currently_dashing != dashing:
 				dashing = currently_dashing
@@ -65,6 +68,8 @@ func _process(delta):
 				#Not sure how intense we want the dash but this works for now
 				#need to balance later!
 				position.z += (-20.0 * delta) * 2
+				#audio_manager.RiverDashAMB()
+				play_dash_sound.emit()
 			
 		elif ate_lure:
 			#timer for the fight back with mashing

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://m047ifjfsaba" path="res://Scripts/player.gd" id="1_jka67"]
 [ext_resource type="Script" uid="uid://b156qpbxjnmnl" path="res://Scripts/Eat.gd" id="2_i5arm"]
+[ext_resource type="PackedScene" uid="uid://dwg2jt7qtl0an" path="res://audio_manager.tscn" id="2_jsnrv"]
 [ext_resource type="PackedScene" uid="uid://b4n0vlqmevhis" path="res://Scenes/Fish.tscn" id="2_noarx"]
 [ext_resource type="PackedScene" uid="uid://b2yso33xe3x6i" path="res://Scenes/StaminaTimer.tscn" id="3_a0tk4"]
 [ext_resource type="PackedScene" uid="uid://duuup4xf7vlcv" path="res://Scenes/Lure.tscn" id="3_r3fl7"]
@@ -108,6 +109,8 @@ volumetric_fog_length = 0.01
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 4.918, 1.18, 201.9542)
 script = ExtResource("1_jka67")
 
+[node name="AudioManager" parent="Player" unique_id=713491887 instance=ExtResource("2_jsnrv")]
+
 [node name="Mask" type="Area3D" parent="Player" unique_id=41779598]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 198.17232)
 
@@ -130,12 +133,14 @@ light_energy = 0.468
 stream = ExtResource("4_tereu")
 volume_db = -7.972
 autoplay = true
+bus = &"SFX"
 
 [node name="JungleFishBreak" type="AudioStreamPlayer3D" parent="Player" unique_id=1599900424]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -491.80002, -117.99999, -20000)
 stream = ExtResource("5_tereu")
 volume_db = 4.649
 autoplay = true
+bus = &"SFX"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=872936860 groups=["Player"]]
 transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, -7.806549, -117.37691, 19.873047)
