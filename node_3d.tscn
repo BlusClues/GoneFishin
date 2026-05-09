@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://duuup4xf7vlcv" path="res://Scenes/Lure.tscn" id="3_r3fl7"]
 [ext_resource type="PackedScene" uid="uid://bxf1mqnxpivgw" path="res://Art-Stuff/Fishes_Itchio/Salmo_trutta_fario/Salmo_trutta_fario.fbx" id="3_wc5p8"]
 [ext_resource type="AudioStream" uid="uid://b4gqfsspivnfj" path="res://Sounds/RiverUnderwaterAMB.wav" id="4_jsk3o"]
+[ext_resource type="PackedScene" uid="uid://50l1kl4286qt" path="res://Scenes/Paw.tscn" id="5_cdqbm"]
 [ext_resource type="PackedScene" uid="uid://h87m70c4c8o3" path="res://Scenes/SpeedLines.tscn" id="6_wc5p8"]
 [ext_resource type="PackedScene" uid="uid://d23k6h33ofwqd" path="res://Scenes/GameOverScreen.tscn" id="7_4arys"]
 [ext_resource type="Script" uid="uid://b6ka11clegr0i" path="res://Scripts/environment.gd" id="8_jsk3o"]
-[ext_resource type="PackedScene" uid="uid://farpngci1yu7" path="res://Scenes/BuffCards.tscn" id="9_tereu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jka67"]
 
@@ -73,6 +73,10 @@ stream = ExtResource("4_jsk3o")
 volume_db = -14.953
 autoplay = true
 
+[node name="Paw" parent="." unique_id=1087833949 instance=ExtResource("5_cdqbm")]
+transform = Transform3D(-0.6999999, 1.2785763e-07, 1.6726176e-11, -1.0709922e-07, -0.835223, -0.016369667, -2.4884805e-09, -0.019537322, 0.6998086, 9.085991, 30.725128, 143.12999)
+visible = false
+
 [node name="Fish1" parent="." unique_id=1202207361 instance=ExtResource("2_noarx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.9397836, -3.568399, 55.103436)
 visible = false
@@ -90,8 +94,6 @@ visible = false
 [node name="SpeedLines" parent="." unique_id=1061225812 instance=ExtResource("6_wc5p8")]
 
 [node name="GameOverScreen" parent="." unique_id=1961954659 instance=ExtResource("7_4arys")]
-
-[node name="BuffCards" parent="." unique_id=1238883707 instance=ExtResource("9_tereu")]
 
 [node name="Lure" parent="." unique_id=685706361 instance=ExtResource("3_r3fl7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7210016, -1.7359166, 23.710508)
