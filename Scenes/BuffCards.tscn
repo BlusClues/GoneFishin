@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://farpngci1yu7"]
 
-[ext_resource type="Script" uid="uid://b6l0titmlxjqg" path="res://buff_cards.gd" id="1_4xiku"]
+[ext_resource type="Script" uid="uid://b6l0titmlxjqg" path="res://Scripts/buff_cards.gd" id="1_4xiku"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mex71"]
 
@@ -77,3 +77,6 @@ offset_top = 335.0
 offset_right = 208.0
 offset_bottom = 360.0
 text = "+ Stat / Buff"
+
+[connection signal="gui_input" from="CardPanel/Card1" to="." method="_on_card_1_gui_input"]
+[connection signal="gui_input" from="CardPanel/Card2" to="." method="_on_card_2_gui_input"]
