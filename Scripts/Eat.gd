@@ -16,3 +16,4 @@ func _process(delta: float) -> void:
 			elif orb in get_tree().get_nodes_in_group("lure"):
 				lure_eaten.emit()
 				orb.queue_free() 
+				
