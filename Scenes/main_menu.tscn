@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://d4mws61avpffq"]
 
 [ext_resource type="Script" uid="uid://bl2b32p3ul7b" path="res://Scenes/main_menu.gd" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://bnwcgqei8pn1u" path="res://Art-Stuff/Salmy.png" id="2_48xlc"]
+[ext_resource type="FontFile" uid="uid://pbyy1htcbxv3" path="res://Art-Stuff/Text/Rampart_One/RampartOne-Regular.ttf" id="3_1ehe0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erv1k"]
 bg_color = Color(1, 1, 1, 1)
@@ -19,11 +21,31 @@ grow_vertical = 2
 script = ExtResource("1_28flt")
 
 [node name="Panel" type="Panel" parent="." unique_id=1788097966]
+modulate = Color(0.12941177, 0.48235294, 0.87058824, 1)
 layout_mode = 0
 offset_left = 60.0
 offset_top = 51.0
 offset_right = 1104.0
 offset_bottom = 615.0
+
+[node name="Panel2" type="Panel" parent="Panel" unique_id=1860089296]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 165.0
+offset_right = 737.0
+offset_bottom = 496.0
+
+[node name="Salmy" type="Sprite2D" parent="." unique_id=197983713]
+position = Vector2(329, 320)
+scale = Vector2(0.51311725, 0.51311725)
+texture = ExtResource("2_48xlc")
+
+[node name="Salmy2" type="Sprite2D" parent="." unique_id=413056170]
+position = Vector2(832, 319)
+rotation = -6.2831855
+scale = Vector2(0.51311725, 0.51311725)
+texture = ExtResource("2_48xlc")
+flip_h = true
 
 [node name="Button" type="Button" parent="." unique_id=2049898460]
 layout_mode = 1
@@ -56,6 +78,7 @@ offset_right = 129.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_1ehe0")
 theme_override_font_sizes/font_size = 60
 text = "ROE LIKE"
 
