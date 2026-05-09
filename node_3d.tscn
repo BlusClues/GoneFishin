@@ -106,7 +106,7 @@ volumetric_fog_length = 0.01
 [node name="Node3D" type="Node3D" unique_id=196202678]
 
 [node name="Player" type="StaticBody3D" parent="." unique_id=561671710]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 4.918, 1.18, 203.06862)
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 4.918, 1.18, 206.75273)
 script = ExtResource("1_jka67")
 
 [node name="AudioManager" parent="Player" unique_id=713491887 instance=ExtResource("2_jsnrv")]
@@ -133,14 +133,12 @@ light_energy = 0.468
 stream = ExtResource("4_tereu")
 volume_db = -7.972
 autoplay = true
-bus = &"SFX"
 
 [node name="JungleFishBreak" type="AudioStreamPlayer3D" parent="Player" unique_id=1599900424]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -491.80002, -117.99999, -20000)
 stream = ExtResource("5_tereu")
 volume_db = 4.649
 autoplay = true
-bus = &"SFX"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=872936860 groups=["Player"]]
 transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, -7.806549, -117.37691, 19.873047)

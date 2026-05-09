@@ -2,16 +2,41 @@
 
 [ext_resource type="Script" uid="uid://dq08rxug2e0yp" path="res://Scripts/timer.gd" id="1_7jo7d"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q8m8r"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h3sn8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l0ydw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ob2on"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dcaor"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bju4q"]
+
 [node name="StaminaTimer" type="Node2D" unique_id=1399422570]
 script = ExtResource("1_7jo7d")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=583069752]
+
+[node name="LureFreePanel" type="Panel" parent="CanvasLayer" unique_id=1166354424]
+offset_left = 17.0
+offset_top = 7.0
+offset_right = 369.0
+offset_bottom = 264.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_q8m8r")
+
+[node name="LureEscapeLabel" type="Label" parent="CanvasLayer/LureFreePanel" unique_id=1847823380]
+layout_mode = 0
+offset_left = 13.999998
+offset_top = 125.99999
+offset_right = 348.0
+offset_bottom = 160.0
+rotation = -0.29831114
+theme_override_colors/font_color = Color(0.9840744, 0.26861906, 0.32176998, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "You were saved by your buff!"
 
 [node name="StaminaPanel" type="Panel" parent="CanvasLayer" unique_id=1750377986]
 offset_left = 998.0
@@ -42,6 +67,14 @@ offset_top = 1.0
 offset_right = 137.0
 offset_bottom = 28.0
 show_percentage = false
+
+[node name="SizeIncreaseLabel" type="Label" parent="CanvasLayer/StaminaPanel" unique_id=214756074]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 2.0
+offset_right = 128.0
+offset_bottom = 25.0
+text = "Max size +10%"
 
 [node name="EscapePanel" type="Panel" parent="CanvasLayer" unique_id=684296198]
 visible = false
@@ -96,3 +129,45 @@ offset_right = 177.0
 offset_bottom = 68.0
 theme_override_font_sizes/font_size = 24
 text = "+ 200"
+
+[node name="DoublePointsPanel" type="Panel" parent="CanvasLayer" unique_id=1649675279]
+offset_left = 44.0
+offset_top = 55.0
+offset_right = 84.0
+offset_bottom = 95.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dcaor")
+
+[node name="DoublePointsTimer" type="ProgressBar" parent="CanvasLayer/DoublePointsPanel" unique_id=494773181]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 13.0
+offset_right = 142.0
+offset_bottom = 40.0
+show_percentage = false
+
+[node name="DoublePointsLabel" type="Label" parent="CanvasLayer/DoublePointsPanel" unique_id=853624539]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 10.0
+offset_right = 105.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 20
+text = "2x"
+
+[node name="EvasionPanel" type="Panel" parent="CanvasLayer" unique_id=165861333]
+offset_left = 34.0
+offset_top = 134.0
+offset_right = 74.0
+offset_bottom = 174.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bju4q")
+
+[node name="EvasionLabel" type="Label" parent="CanvasLayer/EvasionPanel" unique_id=51352072]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -1.0
+offset_right = 364.0
+offset_bottom = 33.0
+rotation = -0.30388358
+theme_override_colors/font_color = Color(0.9843137, 0.26666668, 0.32156864, 1)
+theme_override_font_sizes/font_size = 24
+text = "You managed to evade the lure!"

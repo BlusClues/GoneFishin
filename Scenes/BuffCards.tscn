@@ -42,11 +42,13 @@ autowrap_mode = 2
 
 [node name="StatIncrease1Label" type="Label" parent="CardPanel/Card1" unique_id=1693030040]
 layout_mode = 0
-offset_left = 112.0
-offset_top = 335.0
-offset_right = 203.0
-offset_bottom = 360.0
+offset_left = 33.0
+offset_top = 358.0
+offset_right = 283.0
+offset_bottom = 383.0
 text = "+ Stat / Buff"
+horizontal_alignment = 1
+justification_flags = 171
 
 [node name="Card2" type="Panel" parent="CardPanel" unique_id=859342753]
 layout_mode = 0
@@ -78,11 +80,13 @@ autowrap_mode = 2
 
 [node name="StatIncrease2Label" type="Label" parent="CardPanel/Card2" unique_id=711455056]
 layout_mode = 0
-offset_left = 117.0
-offset_top = 335.0
-offset_right = 208.0
-offset_bottom = 360.0
+offset_left = 33.0
+offset_top = 359.0
+offset_right = 289.0
+offset_bottom = 384.0
 text = "+ Stat / Buff"
+horizontal_alignment = 1
+justification_flags = 171
 
 [connection signal="gui_input" from="CardPanel/Card1" to="." method="_on_card_1_gui_input"]
 [connection signal="gui_input" from="CardPanel/Card2" to="." method="_on_card_2_gui_input"]

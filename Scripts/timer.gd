@@ -7,6 +7,11 @@ extends Node2D
 @onready var points_label = $CanvasLayer/PointsPanel/PointsLabel
 @onready var fish_point_label = $CanvasLayer/PointsPanel/FishPointIncreaseLabel
 @onready var escape_point_label = $CanvasLayer/PointsPanel/LureEscapeIncreaseLabel
+@onready var free_lure_label = $CanvasLayer/LureFreePanel/LureEscapeLabel
+@onready var double_points_panel = $CanvasLayer/DoublePointsPanel
+@onready var double_points_timer_bar = $CanvasLayer/DoublePointsPanel/DoublePointsTimer
+@onready var size_increase_label = $CanvasLayer/StaminaPanel/SizeIncreaseLabel
+@onready var evasion_label = $CanvasLayer/EvasionPanel/EvasionLabel
 
 var current_stamina
 var is_dashing = false
@@ -46,6 +51,10 @@ func _ready():
 	eaten_label.modulate.a = 0.0
 	fish_point_label.modulate.a = 0.0
 	escape_point_label.modulate.a = 0.0
+	free_lure_label.modulate.a = 0.0
+	double_points_panel.visible = false
+	size_increase_label.modulate.a = 0.0
+	evasion_label.modulate.a = 0.0
 	
 	#initalize the progress bar
 	stamina_bar.max_value = STAMINA_TIME
@@ -75,6 +84,7 @@ func _process(delta):
 			ate_lure = false
 			
 			current_points += LURE_ESCAPE_INCREASE * points_rate
+			escape_point_label.text = "+ " + str(int(LURE_ESCAPE_INCREASE * points_rate))
 			escape_point_label.modulate.a = 1.0
 			tween_points = create_tween()
 			tween_points.tween_property(escape_point_label, "modulate:a", 0.0, 2.0)
@@ -88,6 +98,7 @@ func _process(delta):
 	#activate double points buff
 	if double_points:
 		double_points_timer -= delta
+		double_points_timer_bar.value = double_points_timer
 		if double_points_timer <= 0:
 			double_points = false
 			points_rate = 1.0
@@ -127,6 +138,7 @@ func _on_collision_shape_3d_fish_eaten():
 			tween_points.kill()
 		
 		#tween to make the text gradually fade for points
+		fish_point_label.text = "+ " + str(int(FISH_POINT_INCREASE * points_rate))
 		fish_point_label.modulate.a = 1.0
 		tween_points = create_tween()
 		tween_points.tween_property(fish_point_label, "modulate:a", 0.0, 2.0)
@@ -142,7 +154,8 @@ func _on_collision_shape_3d_fish_eaten():
 		#track the amount of fish eaten
 		fish_eaten_num += 1
 		print(fish_eaten_num)
-		if fish_eaten_num % 5 == 0:
+		#if fish_eaten_num % 5 == 0:
+		if fish_eaten_num == 1:
 			gain_buff.emit()
 
 func _on_collision_shape_3d_lure_eaten():
@@ -155,9 +168,16 @@ func _on_collision_shape_3d_lure_eaten():
 			escape_panel.visible = true
 		else:
 			evaded_lure = false
+			evasion_label.modulate.a = 1.0
+			var tween_evasion = create_tween()
+			tween_evasion.tween_property(evasion_label, "modulate:a", 0.0, 2.0)
 	else:
 		lure_escape_cards -= 1
 		print("you used one of your cards")
+		
+		free_lure_label.modulate.a = 1.0
+		var tween = create_tween()
+		tween.tween_property(free_lure_label, "modulate:a", 0.0, 2.0)
 
 #Counts how many button presses there have been
 func _on_player_current_button_presses(button_presses: float):
@@ -175,6 +195,8 @@ func _on_buff_cards_buff_double_points():
 	double_points = true
 	points_rate = 2.0
 	double_points_timer = DOUBLE_POINTS_TIMER_DEFAULT
+	double_points_panel.visible = true
+	double_points_timer_bar.max_value = DOUBLE_POINTS_TIMER_DEFAULT
 
 #checks if you have chosen the next lure free buff
 func _on_buff_cards_buff_next_lure_free():
@@ -185,6 +207,10 @@ func _on_buff_cards_buff_bigger_stomach():
 	stomach_size += 0.1
 	stamina_bar.max_value = STAMINA_TIME * stomach_size
 	print(stamina_bar.max_value)
+	
+	size_increase_label.modulate.a = 1.0
+	var tween = create_tween()
+	tween.tween_property(size_increase_label, "modulate:a", 0.0, 2.0)
 
 func _on_player_evaded_lure():
 	evaded_lure = true
