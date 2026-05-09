@@ -21,12 +21,14 @@ offset_bottom = 545.0
 
 [node name="Buff1Label" type="Label" parent="CardPanel/Card1" unique_id=1112811403]
 layout_mode = 0
-offset_left = 124.0
-offset_top = 32.0
-offset_right = 192.0
-offset_bottom = 66.0
+offset_left = 29.0
+offset_top = 25.0
+offset_right = 301.0
+offset_bottom = 59.0
 theme_override_font_sizes/font_size = 24
-text = "Buff 1"
+text = "Increase Manuverablity"
+horizontal_alignment = 1
+justification_flags = 171
 
 [node name="Description1Label" type="Label" parent="CardPanel/Card1" unique_id=45468254]
 layout_mode = 0
@@ -35,6 +37,7 @@ offset_top = 220.0
 offset_right = 311.0
 offset_bottom = 330.0
 text = "This is the buff description, this to show what the buff is supposed to do for the player"
+horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="StatIncrease1Label" type="Label" parent="CardPanel/Card1" unique_id=1693030040]
@@ -54,12 +57,14 @@ offset_bottom = 545.0
 
 [node name="Buff2Label" type="Label" parent="CardPanel/Card2" unique_id=203206388]
 layout_mode = 0
-offset_left = 124.0
-offset_top = 32.0
-offset_right = 192.0
-offset_bottom = 66.0
+offset_left = 27.0
+offset_top = 21.0
+offset_right = 299.0
+offset_bottom = 55.0
 theme_override_font_sizes/font_size = 24
-text = "Buff 2"
+text = "Increase Manuverablity"
+horizontal_alignment = 1
+justification_flags = 171
 
 [node name="Description2Label" type="Label" parent="CardPanel/Card2" unique_id=1179076716]
 layout_mode = 0
@@ -68,6 +73,7 @@ offset_top = 220.0
 offset_right = 313.0
 offset_bottom = 330.0
 text = "This is the buff description, this to show what the buff is supposed to do for the player"
+horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="StatIncrease2Label" type="Label" parent="CardPanel/Card2" unique_id=711455056]

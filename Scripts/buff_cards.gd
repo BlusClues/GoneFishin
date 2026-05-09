@@ -48,9 +48,8 @@ func load_json_file(path: String):
 #choose and update the data that is on the cards
 func update_cards():
 	#get random numbers for the buffs
-	#card1_id = randi_range(1, 7)
-	card1_id = 7
-	card2_id = randi_range(1, 7)
+	card1_id = randi_range(1, 6)
+	card2_id = randi_range(1, 6)
 	
 	#choose random buffs
 	card1_data = buff_library[card1_id]
@@ -83,13 +82,13 @@ func process_chosen_buff(id: int):
 			buff_next_lure_free.emit()
 		2:
 			buff_bigger_stomach.emit()
-		4:
+		3:
 			buff_percent_no_hook.emit()
-		5:
+		4:
 			buff_double_points.emit()
-		6:
+		5:
 			buff_size_increase.emit()
-		7:
+		6:
 			buff_increase_manuverability.emit()
 
 #checks if card 1 was clicked
