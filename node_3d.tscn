@@ -177,3 +177,4 @@ sky_mode = 1
 [connection signal="buff_next_lure_free" from="BuffCards" to="Timer" method="_on_buff_cards_buff_next_lure_free"]
 [connection signal="buff_pause" from="BuffCards" to="Player" method="_on_buff_cards_buff_pause"]
 [connection signal="buff_percent_no_hook" from="BuffCards" to="Player" method="_on_buff_cards_buff_percent_no_hook"]
+[connection signal="buff_size_increase" from="BuffCards" to="Player" method="_on_buff_cards_buff_size_increase"]

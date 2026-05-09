@@ -1,5 +1,9 @@
 extends StaticBody3D
 
+#@onready var fish_model = $Player/Mask/Camera3D/Salmo_trutta_fario
+#@onready var collider = $Player/Mask/CollisionShape3D
+
+
 signal dash_state_changed(is_player_dashing: bool)
 signal current_button_presses(button_presses: float)
 signal max_buttons_needed(max_amount_needed: float)
@@ -14,10 +18,13 @@ var just_hooked = false
 var escape_timer
 var lure_escape_cards = 0
 var evasion_chance = 0
+var size_increase = 1
+var num_of_size_increases = 0
 
 const NEEDED_ESCAPE_AMOUNT = 20.0
 const ESCAPE_TIMER_DEFAULT = 0.5
 const EVASION_MAX = 100
+const SIZE_INCREASE_RATE = 0.1
 
 #capture inputs
 func _ready():
@@ -67,7 +74,8 @@ func _process(delta):
 			
 			#send the info to the timer when first hooked
 			if just_hooked:
-				max_buttons_needed.emit(NEEDED_ESCAPE_AMOUNT)
+				max_buttons_needed.emit(NEEDED_ESCAPE_AMOUNT - num_of_size_increases)
+				print(NEEDED_ESCAPE_AMOUNT - num_of_size_increases)
 				current_button_presses.emit(escape_button_presses)
 				just_hooked = false
 			
@@ -131,3 +139,11 @@ func _on_buff_cards_buff_next_lure_free():
 #checks if you have chosen the 10% evasion chance buff
 func _on_buff_cards_buff_percent_no_hook():
 	evasion_chance += 10
+
+#checks if you have chosen the size increase buff
+func _on_buff_cards_buff_size_increase():
+	num_of_size_increases += 1
+	size_increase += SIZE_INCREASE_RATE
+	var mask_node = get_node_or_null("Mask")
+	mask_node.scale = Vector3.ONE * size_increase
+	print("new scale: ", mask_node.scale)

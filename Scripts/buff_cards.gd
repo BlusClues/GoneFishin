@@ -20,6 +20,7 @@ signal buff_double_points()
 signal buff_next_lure_free()
 signal buff_bigger_stomach()
 signal buff_percent_no_hook()
+signal buff_size_increase()
 
 func _ready():
 	#gather the json data
@@ -47,7 +48,7 @@ func load_json_file(path: String):
 func update_cards():
 	#get random numbers for the buffs
 	#card1_id = randi_range(1, 7)
-	card1_id = 4
+	card1_id = 6
 	card2_id = randi_range(1, 7)
 	
 	#choose random buffs
@@ -85,6 +86,8 @@ func process_chosen_buff(id: int):
 			buff_percent_no_hook.emit()
 		5:
 			buff_double_points.emit()
+		6:
+			buff_size_increase.emit()
 
 #checks if card 1 was clicked
 func _on_card_1_gui_input(event: InputEvent):

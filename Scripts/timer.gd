@@ -107,7 +107,7 @@ func _process(delta):
 		game_over.emit()
 	else:
 		#update the points label
-		points_label.text = "Points: " + str(current_points)
+		points_label.text = "Points: " + str(int(current_points))
 
 #checks if the player is still dashing
 func _on_player_dash_state_changed(is_player_dashing: bool):
