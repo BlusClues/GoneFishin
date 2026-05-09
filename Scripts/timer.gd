@@ -24,6 +24,7 @@ var double_points_timer
 var points_rate = 1.0
 var lure_escape_cards = 0
 var stomach_size = 1.0
+var evaded_lure = false
 
 const STAMINA_TIME = 10
 const DASH_MULTIPLIER = 2.0
@@ -147,10 +148,13 @@ func _on_collision_shape_3d_fish_eaten():
 func _on_collision_shape_3d_lure_eaten():
 	#when you eat a lure reduce stamina
 	if lure_escape_cards <= 0:
-		print("Lure Eaten")
-		current_stamina -= STAMINA_LURE_DECREASE_TIME
-		ate_lure = true
-		escape_panel.visible = true
+		if !evaded_lure:
+			print("Lure Eaten")
+			current_stamina -= STAMINA_LURE_DECREASE_TIME
+			ate_lure = true
+			escape_panel.visible = true
+		else:
+			evaded_lure = false
 	else:
 		lure_escape_cards -= 1
 		print("you used one of your cards")
@@ -158,7 +162,6 @@ func _on_collision_shape_3d_lure_eaten():
 #Counts how many button presses there have been
 func _on_player_current_button_presses(button_presses: float):
 	escape_button_presses = button_presses
-	print(escape_button_presses)
 
 #gets the max number of button presses needed
 func _on_player_max_buttons_needed(max_amount_needed: float):
@@ -182,3 +185,6 @@ func _on_buff_cards_buff_bigger_stomach():
 	stomach_size += 0.1
 	stamina_bar.max_value = STAMINA_TIME * stomach_size
 	print(stamina_bar.max_value)
+
+func _on_player_evaded_lure():
+	evaded_lure = true

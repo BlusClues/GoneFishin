@@ -3,6 +3,7 @@ extends StaticBody3D
 signal dash_state_changed(is_player_dashing: bool)
 signal current_button_presses(button_presses: float)
 signal max_buttons_needed(max_amount_needed: float)
+signal evaded_lure()
 
 var dashing = false
 var is_game_paused = false
@@ -12,9 +13,11 @@ var escape_button_presses = 0.0
 var just_hooked = false  
 var escape_timer
 var lure_escape_cards = 0
+var evasion_chance = 0
 
 const NEEDED_ESCAPE_AMOUNT = 20.0
 const ESCAPE_TIMER_DEFAULT = 0.5
+const EVASION_MAX = 100
 
 #capture inputs
 func _ready():
@@ -70,7 +73,6 @@ func _process(delta):
 			
 			#mashing function, checks if you clicked the mashing enough
 			if Input.is_action_just_pressed("Escape"):
-				print("Button pressed")
 				escape_button_presses += 1
 				current_button_presses.emit(escape_button_presses)
 			
@@ -91,6 +93,18 @@ func _process(delta):
 		#return mouse if game is paused
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
+#checks if the player was able to avoid the lure
+func did_it_hook():
+	if evasion_chance == 0:
+		return true
+	elif evasion_chance == EVASION_MAX:
+		return false
+	else:
+		var random_num = randi_range(0, EVASION_MAX)
+		if random_num <= evasion_chance:
+			return false
+	return true
+
 #checks if the game is paused
 func _on_game_over_screen_gameover_pause(is_gameover_paused: bool):
 	is_game_paused = is_gameover_paused
@@ -98,8 +112,11 @@ func _on_game_over_screen_gameover_pause(is_gameover_paused: bool):
 #checks if you ate a lure
 func _on_collision_shape_3d_lure_eaten():
 	if lure_escape_cards <= 0:
-		just_hooked = true
-		ate_lure = true
+		if did_it_hook():
+			just_hooked = true
+			ate_lure = true
+		else:
+			evaded_lure.emit()
 	else:
 		lure_escape_cards -= 1
 
@@ -110,3 +127,7 @@ func _on_buff_cards_buff_pause(is_paused: bool):
 #checks if you have chosen the next lure free buff
 func _on_buff_cards_buff_next_lure_free():
 	lure_escape_cards += 1
+
+#checks if you have chosen the 10% evasion chance buff
+func _on_buff_cards_buff_percent_no_hook():
+	evasion_chance += 10
