@@ -7,6 +7,11 @@ var point_2: Vector3
 
 @onready var fishes: Resource = preload("res://Scenes/Fish.tscn")
 @onready var lures: Resource = preload("res://Scenes/Lure.tscn")
+@onready var paw_scene: Resource = preload("res://Scenes/Paw.tscn")
+
+#var timer: float = 0.0
+#var spawn_chance: float = 1
+#var randpaw
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +31,13 @@ func _process(delta):
 		spawn_fishes()
 		spawn_fishes()
 		spawn_lures()
+		
+	#if player.global_position.z > 0:
+		#timer += delta
+		#if timer >= 5.0:
+			#timer = 0.0
+			#if randf() < spawn_chance:
+				#spawn_paw()
 		
 	for f in get_tree().get_nodes_in_group("fish"):
 		for l in get_tree().get_nodes_in_group("lure"):
@@ -73,3 +85,14 @@ func spawn_lures():
 	var spawner_location: Vector3 = get_random_point_inside(point_1, point_2)
 	
 	lure_instance.position = spawner_location
+
+#func spawn_paw() -> void:
+	#var paw_instance = paw_scene.instantiate()
+	#get_tree().current_scene.add_child(paw_instance)
+	#randpaw = randi_range(1,2)
+	#if randpaw == 1:
+		#paw_instance.global_position = Vector3(9, 30, player.global_position.z - 50)
+	#elif randpaw == 2:
+		#paw_instance.global_position = Vector3(-7, 30, player.global_position.z - 50)
+			#
+		#

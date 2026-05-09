@@ -8,11 +8,57 @@
 [ext_resource type="PackedScene" uid="uid://bxf1mqnxpivgw" path="res://Art-Stuff/Fishes_Itchio/Salmo_trutta_fario/Salmo_trutta_fario.fbx" id="3_wc5p8"]
 [ext_resource type="AudioStream" uid="uid://b4gqfsspivnfj" path="res://Sounds/RiverUnderwaterAMB.wav" id="4_jsk3o"]
 [ext_resource type="AudioStream" uid="uid://be7wggo3pngcs" path="res://Sounds/junglefishbreak.wav" id="5_tereu"]
+[ext_resource type="PackedScene" uid="uid://50l1kl4286qt" path="res://Scenes/Paw.tscn" id="5_cdqbm"]
 [ext_resource type="PackedScene" uid="uid://h87m70c4c8o3" path="res://Scenes/SpeedLines.tscn" id="6_wc5p8"]
 [ext_resource type="PackedScene" uid="uid://d23k6h33ofwqd" path="res://Scenes/GameOverScreen.tscn" id="7_4arys"]
 [ext_resource type="Script" uid="uid://b6ka11clegr0i" path="res://Scripts/environment.gd" id="8_jsk3o"]
+[ext_resource type="Texture2D" uid="uid://dindct04yrink" path="res://Art-Stuff/textures/Rocks008_2K-JPG/Rocks008_2K-JPG_Color.jpg" id="12_3v7ru"]
+[ext_resource type="Texture2D" uid="uid://bfjanlm1o6nx5" path="res://Art-Stuff/textures/Rocks008_2K-JPG/Rocks008_2K-JPG_NormalGL.jpg" id="13_tcnuu"]
+[ext_resource type="Texture2D" uid="uid://8vj4bqpd2aco" path="res://Art-Stuff/textures/Rocks008_2K-JPG/Rocks008_2K-JPG_Displacement.jpg" id="13_tuemg"]
+[ext_resource type="Texture2D" uid="uid://xm4d8fjtp147" path="res://Art-Stuff/textures/Rocks008_2K-JPG/Rocks008_2K-JPG_Roughness.jpg" id="14_tuemg"]
+[ext_resource type="Texture2D" uid="uid://byaxc0huy2nic" path="res://Art-Stuff/textures/Ice003_2K-JPG/Ice003_2K-JPG_NormalGL.jpg" id="16_ealrb"]
+[ext_resource type="Script" uid="uid://v7uaa7kiwtwt" path="res://ceiling.gd" id="17_jsnrv"]
+[ext_resource type="Texture2D" uid="uid://dk674lhrjgsef" path="res://Art-Stuff/environment/EveningSkyHDRI032A_2K/EveningSkyHDRI032A_2K_HDR.exr" id="17_tuemg"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jka67"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tuemg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ealrb"]
+albedo_texture = ExtResource("12_3v7ru")
+normal_enabled = true
+normal_texture = ExtResource("13_tcnuu")
+heightmap_enabled = true
+heightmap_scale = 7.96
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("13_tuemg")
+uv1_scale = Vector3(0.1, 2, 0.1)
+proximity_fade_enabled = true
+proximity_fade_distance = 0.01
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3v7ru"]
+material = SubResource("StandardMaterial3D_ealrb")
+subdivide_width = 50
+subdivide_depth = 50
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lggff"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s0gvp"]
+albedo_color = Color(0, 0.42745098, 0.07450981, 0.7058824)
+metallic = 0.5
+roughness = 0.0
+normal_enabled = true
+normal_texture = ExtResource("16_ealrb")
+uv1_scale = Vector3(3, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0g27"]
+albedo_texture = ExtResource("12_3v7ru")
+roughness_texture = ExtResource("14_tuemg")
+normal_enabled = true
+normal_texture = ExtResource("13_tcnuu")
+uv1_scale = Vector3(1, 10, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc5p8"]
 metallic = 1.0
@@ -25,18 +71,25 @@ roughness = 0.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
 albedo_color = Color(0.040201943, 0.38719133, 0.10406857, 1)
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_i0g27"]
+panorama = ExtResource("17_tuemg")
+energy_multiplier = 0.2
+
 [sub_resource type="Sky" id="Sky_i5arm"]
+sky_material = SubResource("PanoramaSkyMaterial_i0g27")
 
 [sub_resource type="Environment" id="Environment_wc5p8"]
 background_mode = 2
+background_energy_multiplier = 0.2
 sky = SubResource("Sky_i5arm")
 ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_color = Color(0.31806883, 0.7045785, 0.52926224, 1)
 ambient_light_energy = 0.0
 tonemap_exposure = 4.0
 fog_enabled = true
-fog_light_color = Color(0.011764706, 0.4117647, 0.28235295, 1)
-fog_density = 0.0216
+fog_light_color = Color(0.005614404, 0.30680197, 0.20606932, 1)
+fog_light_energy = 0.5
+fog_density = 0.1529
 fog_height = -256.0
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.1016
@@ -51,14 +104,14 @@ volumetric_fog_length = 0.01
 [node name="Node3D" type="Node3D" unique_id=196202678]
 
 [node name="Player" type="StaticBody3D" parent="." unique_id=561671710]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 4.918, 1.18, 200)
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 4.918, 1.18, 201.9542)
 script = ExtResource("1_jka67")
 
 [node name="Mask" type="Area3D" parent="Player" unique_id=41779598]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 198.17232)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Mask" unique_id=1002879969 groups=["Player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -111.108376, -0.9433594)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Mask" unique_id=1002879969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -111.108376, 48.777344)
 shape = SubResource("SphereShape3D_jka67")
 script = ExtResource("2_i5arm")
 
@@ -67,6 +120,10 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 1.5068588, 0.7148437
 
 [node name="Salmo_trutta_fario" parent="Player/Mask/Camera3D" unique_id=1785995280 instance=ExtResource("3_wc5p8")]
 transform = Transform3D(-0.99871933, 0, -0.050592836, 0, 1, 0, 0.050592836, 0, -0.99871933, 0, -0.9104762, -0.14360046)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Player/Mask/Camera3D" unique_id=842072160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1635402, -2.8133698)
+light_energy = 0.468
 
 [node name="RiverUnderwaterAMB" type="AudioStreamPlayer3D" parent="Player" unique_id=1446670803]
 stream = ExtResource("4_jsk3o")
@@ -78,6 +135,14 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -491.80002, -117.99999,
 stream = ExtResource("5_tereu")
 volume_db = 4.649
 autoplay = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=872936860 groups=["Player"]]
+transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, -7.806549, -117.37691, 19.873047)
+shape = SubResource("SphereShape3D_tuemg")
+
+[node name="Paw" parent="." unique_id=1087833949 groups=["paw"] instance=ExtResource("5_cdqbm")]
+transform = Transform3D(-0.6999999, 1.2785763e-07, 1.6725937e-11, -1.0709922e-07, -0.8352231, -0.016369665, -2.4884808e-09, -0.019537322, 0.69980854, 4.4689627, 24.012632, 147.82547)
+visible = false
 
 [node name="Fish1" parent="." unique_id=1202207361 instance=ExtResource("2_noarx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.9397836, -3.568399, 55.103436)
@@ -107,19 +172,41 @@ visible = false
 
 [node name="Tube" type="Node3D" parent="." unique_id=1926135727]
 
+[node name="left" type="MeshInstance3D" parent="Tube" unique_id=214410859]
+transform = Transform3D(0.036069304, 0.80839986, 0, -12.22831, 0.0023845062, 0, 0, 0, 201.9558, -18.99, -0.04, 0.151)
+mesh = SubResource("PlaneMesh_3v7ru")
+
+[node name="right" type="MeshInstance3D" parent="Tube" unique_id=1532792103]
+transform = Transform3D(-0.26441267, -0.80821437, 0, 12.225503, -0.017480027, 0, 0, 0, 201.9558, 19.308, -0.04, 0.098)
+mesh = SubResource("PlaneMesh_3v7ru")
+
+[node name="floor" type="MeshInstance3D" parent="Tube" unique_id=1065278292]
+transform = Transform3D(19.919392, 0.004797707, 0, -0.11751192, 0.81325734, 0, 0, 0, 201.95575, 1.026, -12.501, 0.161)
+mesh = SubResource("PlaneMesh_3v7ru")
+
+[node name="ceiling" type="MeshInstance3D" parent="Tube" unique_id=1066296671]
+transform = Transform3D(-3810.8948, 2.387516e-06, 0, -0.000333159, -27.31, 0, 0, 0, 40476.285, 0.009, 12.472, 0.151)
+mesh = SubResource("PlaneMesh_lggff")
+surface_material_override/0 = SubResource("StandardMaterial3D_s0gvp")
+script = ExtResource("17_jsnrv")
+
 [node name="Left_wall" type="CSGBox3D" parent="Tube" unique_id=1116847331]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.99, -0.04, 0.151)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.989998, -0.040000916, 0.15100098)
+visible = false
 use_collision = true
 size = Vector3(0.194, 25.457, 404.582)
+material = SubResource("StandardMaterial3D_i0g27")
 
 [node name="Right_wall" type="CSGBox3D" parent="Tube" unique_id=36174229]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.308, -0.04, 0.098)
+visible = false
 use_collision = true
 size = Vector3(0.287, 25.457, 404.582)
 material = SubResource("StandardMaterial3D_wc5p8")
 
 [node name="Floor" type="CSGBox3D" parent="Tube" unique_id=1339368835]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.026, -12.501, 0.161)
+visible = false
 use_collision = true
 size = Vector3(45.544, 0.535, 404.582)
 material = SubResource("StandardMaterial3D_6iypd")
@@ -147,6 +234,7 @@ compositor = SubResource("Compositor_jsk3o")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2083172018]
 transform = Transform3D(-0.99871933, 0, -0.050592836, 0, 1, 0, 0.050592836, 0, -0.99871933, 1.8902354, 8.587702, -292.15958)
 light_color = Color(0.8918808, 0.94845456, 0.7268696, 1)
+light_energy = 0.512
 light_indirect_energy = 3.218
 sky_mode = 1
 

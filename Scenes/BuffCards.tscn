@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://farpngci1yu7"]
+
+[ext_resource type="Script" uid="uid://b6l0titmlxjqg" path="res://Scripts/buff_cards.gd" id="1_4xiku"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mex71"]
+
+[node name="BuffCards" type="Node2D" unique_id=1238883707]
+script = ExtResource("1_4xiku")
+
+[node name="CardPanel" type="Panel" parent="." unique_id=1534931450]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mex71")
+
+[node name="Card1" type="Panel" parent="CardPanel" unique_id=661727117]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 115.0
+offset_right = 501.0
+offset_bottom = 545.0
+
+[node name="Buff1Label" type="Label" parent="CardPanel/Card1" unique_id=1112811403]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 32.0
+offset_right = 192.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 24
+text = "Buff 1"
+
+[node name="Description1Label" type="Label" parent="CardPanel/Card1" unique_id=45468254]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 220.0
+offset_right = 311.0
+offset_bottom = 330.0
+text = "This is the buff description, this to show what the buff is supposed to do for the player"
+autowrap_mode = 2
+
+[node name="StatIncrease1Label" type="Label" parent="CardPanel/Card1" unique_id=1693030040]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 335.0
+offset_right = 203.0
+offset_bottom = 360.0
+text = "+ Stat / Buff"
+
+[node name="Card2" type="Panel" parent="CardPanel" unique_id=859342753]
+layout_mode = 0
+offset_left = 661.0
+offset_top = 115.0
+offset_right = 987.0
+offset_bottom = 545.0
+
+[node name="Buff2Label" type="Label" parent="CardPanel/Card2" unique_id=203206388]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 32.0
+offset_right = 192.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 24
+text = "Buff 2"
+
+[node name="Description2Label" type="Label" parent="CardPanel/Card2" unique_id=1179076716]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 220.0
+offset_right = 313.0
+offset_bottom = 330.0
+text = "This is the buff description, this to show what the buff is supposed to do for the player"
+autowrap_mode = 2
+
+[node name="StatIncrease2Label" type="Label" parent="CardPanel/Card2" unique_id=711455056]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 335.0
+offset_right = 208.0
+offset_bottom = 360.0
+text = "+ Stat / Buff"
+
+[connection signal="gui_input" from="CardPanel/Card1" to="." method="_on_card_1_gui_input"]
+[connection signal="gui_input" from="CardPanel/Card2" to="." method="_on_card_2_gui_input"]
