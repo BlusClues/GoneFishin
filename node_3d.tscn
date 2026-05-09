@@ -221,11 +221,11 @@ use_collision = true
 size = Vector3(38.192, 0.433, 404.582)
 
 [node name="Environment" type="CSGBox3D" parent="Tube" unique_id=1271402690]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042, 0, 5.3355255)
 material_overlay = SubResource("StandardMaterial3D_i5arm")
 transparency = 0.5
 cast_shadow = 2
-size = Vector3(38.192, 25.457, 404.582)
+size = Vector3(38.192, 25.457, 415.25305)
 script = ExtResource("8_jsk3o")
 
 [node name="Node3D" type="Node3D" parent="Tube" unique_id=2044196865]
