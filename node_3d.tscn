@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://m047ifjfsaba" path="res://Scripts/player.gd" id="1_jka67"]
 [ext_resource type="Script" uid="uid://b156qpbxjnmnl" path="res://Scripts/Eat.gd" id="2_i5arm"]
-[ext_resource type="PackedScene" uid="uid://dwg2jt7qtl0an" path="res://audio_manager.tscn" id="2_jsnrv"]
 [ext_resource type="PackedScene" uid="uid://b4n0vlqmevhis" path="res://Scenes/Fish.tscn" id="2_noarx"]
 [ext_resource type="PackedScene" uid="uid://b2yso33xe3x6i" path="res://Scenes/StaminaTimer.tscn" id="3_a0tk4"]
 [ext_resource type="PackedScene" uid="uid://duuup4xf7vlcv" path="res://Scenes/Lure.tscn" id="3_r3fl7"]
@@ -109,8 +108,6 @@ volumetric_fog_length = 0.01
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 4.918, 1.18, 203.06862)
 script = ExtResource("1_jka67")
 
-[node name="AudioManager" parent="Player" unique_id=713491887 instance=ExtResource("2_jsnrv")]
-
 [node name="Mask" type="Area3D" parent="Player" unique_id=41779598]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 198.17232)
 
@@ -131,7 +128,7 @@ light_energy = 0.468
 
 [node name="RiverUnderwaterAMB" type="AudioStreamPlayer3D" parent="Player" unique_id=1446670803]
 stream = ExtResource("4_tereu")
-volume_db = -7.972
+volume_db = -14.878
 autoplay = true
 bus = &"SFX"
 

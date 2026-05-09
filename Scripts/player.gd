@@ -20,6 +20,7 @@ var evasion_chance = 0
 var size_increase = 1
 var num_of_size_increases = 0
 var sensitivity_rate = 1
+var sound_played = false
 
 const NEEDED_ESCAPE_AMOUNT = 20.0
 const ESCAPE_TIMER_DEFAULT = 0.5
@@ -69,7 +70,9 @@ func _process(delta):
 				#need to balance later!
 				position.z += (-20.0 * delta) * 2
 				#audio_manager.RiverDashAMB()
-				play_dash_sound.emit()
+				if sound_played == false:
+					sound_played = true
+					play_dash_sound.emit()
 			
 		elif ate_lure:
 			#timer for the fight back with mashing
