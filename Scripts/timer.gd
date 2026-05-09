@@ -23,6 +23,7 @@ var fish_eaten_num = 0
 var double_points = false
 var double_points_timer
 var points_rate = 1.0
+var lure_escape_cards = 0
 
 const DASH_MULTIPLIER = 2.0
 const FISH_POINT_INCREASE = 100
@@ -144,11 +145,14 @@ func _on_collision_shape_3d_fish_eaten():
 
 func _on_collision_shape_3d_lure_eaten():
 	#when you eat a lure reduce stamina
-	print("Lure Eaten")
-	current_stamina -= STAMINA_LURE_DECREASE_TIME
-	ate_lure = true
-	
-	escape_panel.visible = true
+	if lure_escape_cards <= 0:
+		print("Lure Eaten")
+		current_stamina -= STAMINA_LURE_DECREASE_TIME
+		ate_lure = true
+		escape_panel.visible = true
+	else:
+		lure_escape_cards -= 1
+		print("you used one of your cards")
 
 #Counts how many button presses there have been
 func _on_player_current_button_presses(button_presses: float):
@@ -167,3 +171,7 @@ func _on_buff_cards_buff_double_points():
 	double_points = true
 	points_rate = 2.0
 	double_points_timer = DOUBLE_POINTS_TIMER_DEFAULT
+
+#checks if you have chosen the next lure free buff
+func _on_buff_cards_buff_next_lure_free():
+	lure_escape_cards += 1

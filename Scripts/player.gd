@@ -11,6 +11,7 @@ var is_gameover = false
 var escape_button_presses = 0.0
 var just_hooked = false  
 var escape_timer
+var lure_escape_cards = 0
 
 const NEEDED_ESCAPE_AMOUNT = 20.0
 const ESCAPE_TIMER_DEFAULT = 0.5
@@ -96,9 +97,16 @@ func _on_game_over_screen_gameover_pause(is_gameover_paused: bool):
 
 #checks if you ate a lure
 func _on_collision_shape_3d_lure_eaten():
-	just_hooked = true
-	ate_lure = true
+	if lure_escape_cards <= 0:
+		just_hooked = true
+		ate_lure = true
+	else:
+		lure_escape_cards -= 1
 
 #checks if you are in the buff choosing state
 func _on_buff_cards_buff_pause(is_paused: bool):
 	is_game_paused = is_paused
+
+#checks if you have chosen the next lure free buff
+func _on_buff_cards_buff_next_lure_free():
+	lure_escape_cards += 1
