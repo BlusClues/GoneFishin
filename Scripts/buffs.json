@@ -1,11 +1,11 @@
 {
 	"buffs":[
-	{"id": 1, "name": "Next Lure Free", "description": "The next lure you hit will have no effect on you!", "stat": "+1 Free Lure Chance"},
-	{"id": 2, "name": "Bigger Stomach", "description": "Your stomach has gotten bigger allowing you to eat more!", "stat": "10% Max Hunger Increase"},
-	{"id": 3, "name": "10% Not Hook", "description": "Permenently gain a 10% chance to not be hooked by a lure!", "stat": "Permanent 10% Evasion Chance"},
-	{"id": 4, "name": "Double Points", "description": "For 10 seconds double the points that you collect!", "stat": "10s of Double Points"},
-	{"id": 5, "name": "Increase Fish Size", "description": "Permanently increase your fish's size by 10%!", "stat": "Permanent 10% Size Increase"},
-	{"id": 6, "name": "Increase Manuverablity", "description": "Permanently increase your fish's manuverability by 10%!", "stat": "Permanent 10% Sensitivity Increase"},
+	{"id": 1, "name": "Next Lure Free", "description": "The next lure you hit will have no effect on you!", "stat": "+1 Free Lure Chance", "img": "res://Art-Stuff/CardArt/FreeLure.png"},
+	{"id": 2, "name": "Bigger Stomach", "description": "Your stomach has gotten bigger allowing you to eat more!", "stat": "10% Max Hunger Increase", "img": "res://Art-Stuff/CardArt/BIGSTO_MAMSDBHL.png"},
+	{"id": 3, "name": "10% Not Hook", "description": "Permenently gain a 10% chance to not be hooked by a lure!", "stat": "Permanent 10% Evasion Chance", "img": "res://Art-Stuff/CardArt/NO_HOOK.png"},
+	{"id": 4, "name": "Double Points", "description": "For 10 seconds double the points that you collect!", "stat": "10s of Double Points", "img": "res://Art-Stuff/CardArt/DOUBLE_POINTS.png"},
+	{"id": 5, "name": "Increase Fish Size", "description": "Permanently increase your fish's size by 10%!", "stat": "Permanent 10% Size Increase", "img": "res://Art-Stuff/CardArt/BIG_SAMON.png"},
+	{"id": 6, "name": "Increase Manuverablity", "description": "Permanently increase your fish's manuverability by 10%!", "stat": "Permanent 10% Sensitivity Increase", "img": "res://Art-Stuff/CardArt/ManuverSprite.png"},
 	{"id": 7, "name": "X-Ray", "description": "For 10 seconds you will clearly be able to tell lures and fish apart!", "stat": "10s of Thermal Vision"}
 	]
 }

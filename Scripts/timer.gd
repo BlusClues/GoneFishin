@@ -154,8 +154,8 @@ func _on_collision_shape_3d_fish_eaten():
 		#track the amount of fish eaten
 		fish_eaten_num += 1
 		print(fish_eaten_num)
-		#if fish_eaten_num % 5 == 0:
-		if fish_eaten_num == 1:
+		if fish_eaten_num % 5 == 0:
+		#if fish_eaten_num == 1:
 			gain_buff.emit()
 
 func _on_collision_shape_3d_lure_eaten():

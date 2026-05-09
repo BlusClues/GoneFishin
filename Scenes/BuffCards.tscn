@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://farpngci1yu7"]
 
 [ext_resource type="Script" uid="uid://b6l0titmlxjqg" path="res://Scripts/buff_cards.gd" id="1_4xiku"]
+[ext_resource type="Texture2D" uid="uid://by83jq65bqocu" path="res://Art-Stuff/CardArt/BIG_SAMON.png" id="2_v328y"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mex71"]
 
@@ -18,6 +19,11 @@ offset_left = 175.0
 offset_top = 115.0
 offset_right = 501.0
 offset_bottom = 545.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CardPanel/Card1" unique_id=1414766641]
+position = Vector2(160, 139)
+scale = Vector2(4, 4)
+texture = ExtResource("2_v328y")
 
 [node name="Buff1Label" type="Label" parent="CardPanel/Card1" unique_id=1112811403]
 layout_mode = 0
@@ -87,6 +93,11 @@ offset_bottom = 384.0
 text = "+ Stat / Buff"
 horizontal_alignment = 1
 justification_flags = 171
+
+[node name="Sprite2D" type="Sprite2D" parent="CardPanel/Card2" unique_id=1763628160]
+position = Vector2(163, 139)
+scale = Vector2(4, 4)
+texture = ExtResource("2_v328y")
 
 [connection signal="gui_input" from="CardPanel/Card1" to="." method="_on_card_1_gui_input"]
 [connection signal="gui_input" from="CardPanel/Card2" to="." method="_on_card_2_gui_input"]

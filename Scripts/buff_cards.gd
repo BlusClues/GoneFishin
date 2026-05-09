@@ -8,6 +8,8 @@ extends Node2D
 @onready var card2_desc = $CardPanel/Card2/Description2Label
 @onready var card1_stats = $CardPanel/Card1/StatIncrease1Label
 @onready var card2_stats = $CardPanel/Card2/StatIncrease2Label
+@onready var card1_pic = $CardPanel/Card1/Sprite2D
+@onready var card2_pic = $CardPanel/Card2/Sprite2D
 
 var buff_data
 var card1_data
@@ -50,8 +52,8 @@ func load_json_file(path: String):
 #choose and update the data that is on the cards
 func update_cards():
 	#get random numbers for the buffs
-	#card1_id = randi_range(1, 6)
-	card1_id = 2
+	card1_id = randi_range(1, 6)
+	#card1_id = 2
 	card2_id = randi_range(1, 6)
 	
 	#choose random buffs
@@ -62,11 +64,13 @@ func update_cards():
 	card1_label.text = card1_data["name"]
 	card1_desc.text = card1_data["description"]
 	card1_stats.text = card1_data["stat"]
+	card1_pic.texture = load(card1_data["img"])
 	
 	#set card 2 values
 	card2_label.text = card2_data["name"]
 	card2_desc.text = card2_data["description"]
 	card2_stats.text = card2_data["stat"]
+	card2_pic.texture = load(card2_data["img"])
 
 #checks if the player has met the condition for gaining buff
 func _on_timer_gain_buff():
