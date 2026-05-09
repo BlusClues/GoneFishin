@@ -7,13 +7,13 @@ extends Node3D
 @onready var WaterSplash: AudioStreamPlayer3D = $"res://Sounds/WaterSplashh.wav"
 @onready var DashRiverAMB: AudioStreamPlayer3D = $"res://Sounds/DashRiverAMB.wav"
 
-class: class AudioManager()
-	func RiverDashAMB():
+#class: class AudioManager()
+#	func RiverDashAMB():
 		## Call the play() method on the reference
 		#FishEatingGood.play() 
 		#FishHookedGood.play()
 		#LineSnap.play()
 		#Reeling.play()
 		#WaterSplash.play()
-		DashRiverAMB.play()
+	#	DashRiverAMB.play()
 	
