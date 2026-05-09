@@ -1,5 +1,6 @@
 extends Area3D
 
+
 #inheritable to both the lure and fish
 
 #detect collision on the object
