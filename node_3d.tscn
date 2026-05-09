@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://47owy5o10wt7"]
 
 [ext_resource type="Script" uid="uid://m047ifjfsaba" path="res://Scripts/player.gd" id="1_jka67"]
-[ext_resource type="Script" uid="uid://b156qpbxjnmnl" path="res://Scripts/eat.gd" id="2_i5arm"]
+[ext_resource type="Script" uid="uid://b156qpbxjnmnl" path="res://Scripts/Eat.gd" id="2_i5arm"]
 [ext_resource type="PackedScene" uid="uid://b4n0vlqmevhis" path="res://Scenes/Fish.tscn" id="2_noarx"]
 [ext_resource type="PackedScene" uid="uid://b2yso33xe3x6i" path="res://Scenes/StaminaTimer.tscn" id="3_a0tk4"]
 [ext_resource type="PackedScene" uid="uid://duuup4xf7vlcv" path="res://Scenes/Lure.tscn" id="3_r3fl7"]
@@ -9,7 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://b4gqfsspivnfj" path="res://Sounds/RiverUnderwaterAMB.wav" id="4_jsk3o"]
 [ext_resource type="PackedScene" uid="uid://h87m70c4c8o3" path="res://Scenes/SpeedLines.tscn" id="6_wc5p8"]
 [ext_resource type="PackedScene" uid="uid://d23k6h33ofwqd" path="res://Scenes/GameOverScreen.tscn" id="7_4arys"]
-[ext_resource type="Script" path="res://Scripts/environment.gd" id="8_jsk3o"]
+[ext_resource type="Script" uid="uid://b6ka11clegr0i" path="res://Scripts/environment.gd" id="8_jsk3o"]
+[ext_resource type="PackedScene" uid="uid://farpngci1yu7" path="res://Scenes/BuffCards.tscn" id="9_tereu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jka67"]
 
@@ -89,6 +90,8 @@ visible = false
 [node name="SpeedLines" parent="." unique_id=1061225812 instance=ExtResource("6_wc5p8")]
 
 [node name="GameOverScreen" parent="." unique_id=1961954659 instance=ExtResource("7_4arys")]
+
+[node name="BuffCards" parent="." unique_id=1238883707 instance=ExtResource("9_tereu")]
 
 [node name="Lure" parent="." unique_id=685706361 instance=ExtResource("3_r3fl7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7210016, -1.7359166, 23.710508)
